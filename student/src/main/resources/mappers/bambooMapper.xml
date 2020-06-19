@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bambooMapper">
+	
+	<select id="getList" resultType="com.test.vo.BambooVO">
+   		select * from bamboo order by b_no desc
+   </select>
+   
+   <select id="selectOne" resultType="com.test.vo.BambooVO">
+   		select * from board where b_no = #{b_no}
+   </select>
+
+   <insert id="insert">
+   	insert into bamboo (b_no, ip, writer, password, title, description) values (bamboo_seq.nextval, #{ip}, #{writer}, #{password}, #{title}, #{description})
+   </insert>
+   
+   <update id="favUpdate">
+   		update bamboo set favorite = #{favorite} where b_no = #{b_no}
+   </update>
+   
+   <update id="notFavUpdate">
+      	update bamboo set notfav = #{notFav} where b_no = #{b_no}
+   </update>
+    
+   <update id="update" parameterType="com.test.vo.BambooVO">
+		UPDATE board
+		   SET TITLE = #{title},
+		   	   CONTENT = #{content}
+		 WHERE b_no = #{b_no} 
+	</update>
+	 
+   <delete id="delete">
+   		delete from board where b_no = #{b_no}
+   </delete>
+   
+   <select id="search" resultType="com.test.vo.BambooVO">
+   		select * from bamboo where ${category} like '%' ||  #{searchValue} || '%'
+   </select>
+
+</mapper>

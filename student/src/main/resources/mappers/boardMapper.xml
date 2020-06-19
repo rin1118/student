@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	
+	<select id="getList" resultType="com.test.vo.BoardVO">
+   		select * from board order by b_no desc
+   </select>
+   
+   <select id="selectOne" resultType="com.test.vo.BoardVO">
+   		select * from board where b_no = #{b_no}
+   </select>
+
+   <insert id="insert">
+   	insert into board(	b_no, 
+   						title, 
+   						content, 
+   						writer)
+   				values(board_seq.nextval, 
+   								#{title}, 
+   								#{content}, 
+   								#{writer})
+   </insert>
+   
+   <update id="update" parameterType="com.test.vo.BoardVO">
+		UPDATE board
+		   SET TITLE = #{title},
+		   	   CONTENT = #{content}
+		 WHERE b_no = #{b_no} 
+	</update>
+	
+   
+   <delete id="delete">
+   		delete from board where b_no = #{b_no}
+   </delete>
+</mapper>

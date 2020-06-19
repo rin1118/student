@@ -1,0 +1,36 @@
+.pageTitle{
+	font-size: 26px;
+    font-weight: 600;
+    color: #190909cc;
+    margin: 50px;	
+}
+
+.listItem {
+    background-color: white;
+    padding: 15px;
+    width: 1024px;
+    text-align: center;
+    margin: 0px auto;
+    font-family: 'JSDongkang-Regular';
+    border-bottom: 1px solid #00000014;
+}
+
+.listItem:last-child {
+	border: none;
+}
+
+#submitBtn{
+	padding: 4px 8px;
+    background-color: #ff9a0edb;
+    color: white;
+    width: 42px;
+    font-size: 13px;
+}
+
+#deleteBtn {
+	padding: 4px 8px;
+    background-color: #ff1c1cba;
+    color: white;
+    width: 42px;
+    font-size: 13px;
+}

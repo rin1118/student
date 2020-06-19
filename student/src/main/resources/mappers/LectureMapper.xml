@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lectureMapper">
+
+	<!-- 강의 등록 sql (교수) -->
+	<select id="getList" resultType="com.test.vo.LectureVO">
+		select * from lecture order by l_no
+	</select>
+
+	<select id="selectOne" resultType="com.test.vo.LectureVO">
+		select * from lecture where
+		l_no = #{l_no}
+	</select>
+
+	<insert id="insert">
+		insert into lecture( l_no,
+		title,
+		description,
+		professor,
+		category
+		)
+		values(lecture_seq.nextval,
+		#{title},
+		#{description},
+		#{professor},
+		#{category})
+	</insert>
+
+	<update id="update" parameterType="com.test.vo.LectureVO">
+		UPDATE lecture SET category =
+		#{category}, TITLE = #{title}, description =
+		#{description} WHERE l_no
+		= #{l_no}
+	</update>
+
+	<delete id="delete"> delete from lecture where l_no = #{l_no} </delete>
+
+
+	<!-- 수강신청 sql (학생) -->
+
+	<!-- 로그인 구현 후 로그인 한 학생의 학번을 받아서 넣어줄 예정 -->
+	<insert id="lectureSignUp">
+		insert into lectureBook (s_no, l_no) values (#{s_no},
+		#{l_no})
+	</insert>
+
+	<select id="lectureSignUpList"
+		resultType="com.test.vo.LectureVO">
+		select * from lecture 
+		where l_no in (select l_no from lectureBook where s_no = #{s_no})
+	</select>
+	
+	<delete id="signUpCancel">
+		delete from lectureBook where l_no= #{l_no}
+	</delete>
+	
+	<!-- 강의 평가 sql(학생) -->
+	
+	<select id="evaluateList" resultType="com.test.vo.EvaluateVO">
+		select l.category, l.title, l.professor, e.s_no, e.e_no, e.description, e.regdate 
+		from lecture_evaluate e
+		join lecture l
+		on l.l_no in (select e.l_no from lecture_evaluate)
+		order BY e.e_no desc
+	</select>
+	
+	<select id="evaluateOne" resultType="com.test.vo.EvaluateVO">
+		select l.category, l.title, l.professor, e.e_no, e.description, e.regdate 
+		from lecture_evaluate e
+		join lecture l
+		on l.l_no in (select e.l_no from lecture_evaluate)
+		and e.e_no = #{e_no}
+	</select>
+	
+	<select id="search" parameterType="com.test.vo.SearchVO" resultType="com.test.vo.EvaluateVO">
+		select l.category, l.title, l.professor, e.e_no, e.description, e.regdate 
+		from lecture_evaluate e
+		join lecture l
+		on l.l_no in (select e.l_no from lecture_evaluate)
+        and ${category} like '%' ||  #{searchValue} || '%'
+		order BY e.e_no desc
+	</select>
+	
+	<insert id="evaluateWrite">
+		insert into lecture_evaluate (e_no, l_no, s_no, description) values (evaluate_seq.nextval, #{l_no}, #{s_no}, #{description})
+	</insert>
+	
+	<update id="evaluateUpdate">
+		update lecture_evaluate SET description = #{description} where e_no = #{e_no}
+	</update>
+	
+	<delete id="evaluateDelete">
+		delete from lecture_evaluate where e_no = #{e_no}
+	</delete>
+</mapper>

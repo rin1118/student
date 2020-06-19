@@ -1,0 +1,101 @@
+@font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.main {
+	position: relative;
+	height: 1000px;
+}
+
+.listItem {
+	background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    width: 1024px;
+    text-align: center;
+    margin: 85px auto;
+    box-shadow: 0px 6px 15px 5px #e3e3e394;
+    font-family: 'JSDongkang-Regular'; 
+}
+
+.listItem tr{
+	height: 50px;
+}
+
+.listItem th:nth-child(1) {
+	width: 13%;
+}
+
+.listItem th:nth-child(2) {
+	width: 45%;
+}
+
+.pageTitle{
+	font-size: 26px;
+    font-weight: 600;
+    color: #190909cc;
+    margin: 50px;	
+}
+
+.writeBtn {
+	display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 11px;
+    background-color: #4f96f2;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 172px;
+    right: 85px;
+}
+
+.registerForm {
+    width: 1024px;
+    background-color: white;
+    margin: 0 auto;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 55px;
+    justify-content: space-around;
+    border-radius: 12px;
+    box-shadow: 0px 12px 22px 2px #e3e3e3a6;
+}
+
+.registerForm form {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    justify-content: center;
+    margin: 0 auto;
+    height: 509px;
+}
+
+.writeInfo {
+	width: 290px;
+    border: 1px solid #4e4e4e7a;
+    text-align: left;
+    margin: 0 auto;
+    padding: 6px;
+    margin-bottom: 20px;
+}
+
+
+.registerForm textarea {
+	height: 225px;
+    margin-bottom: 30px;
+    border: 1px solid #4e4e4e7a;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.registerSubmit {
+	background-color: #4f96f2;
+    color: white;
+    width: 94px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+    margin: 0 auto;
+    padding: 5px 0px;
+}
