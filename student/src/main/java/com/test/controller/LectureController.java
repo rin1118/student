@@ -108,7 +108,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 			} else {
 				url = "/lectureBook/main";
 				LoginVO member = (LoginVO) session.getAttribute("member");
-				s_no = member.getS_no();				
+				s_no = member.getM_no();				
 			}
 		} else {
 			url = "redirect:/login";
@@ -134,7 +134,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		HttpSession session = req.getSession();
 		if(session != null) {
 			LoginVO member = (LoginVO) session.getAttribute("member");
-			s_no = member.getS_no();
+			s_no = member.getM_no();
 		}
 		
 		bookVO.setS_no(s_no); //로그인 미구현이라 임의의 값 넣어줌, 구현후에는 학번 던질꺼임

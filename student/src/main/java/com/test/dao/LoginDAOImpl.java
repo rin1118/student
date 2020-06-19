@@ -17,18 +17,18 @@ public class LoginDAOImpl implements LoginDAO{
 
 	@Override
 	public List<DepartmentVO> getDepartment() {
-		return sqlSession.selectList("loginMapper.getDepartment");
+		return sqlSession.selectList("homeMapper.getDepartment");
 	}
 
 	@Override
 	public void join(LoginVO vo) {
-		sqlSession.insert("loginMapper.join", vo);
+		sqlSession.insert("homeMapper.join", vo);
 	}
 
 	@Override
 	public LoginVO login(LoginVO vo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("loginMapper.login", vo);
+		return sqlSession.selectOne("homeMapper.login", vo);
 	}
 
 }

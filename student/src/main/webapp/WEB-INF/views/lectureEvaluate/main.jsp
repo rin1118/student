@@ -74,7 +74,7 @@
 						<input type="text" name="professor" value="${item.professor}" readOnly> 
 					</span>
 					<textarea name="description" readOnly>${item.description}</textarea> 
-					<c:if test="${item.s_no == member.getS_no()}">
+					<c:if test="${item.m_no == member.getM_no()}">
 						<input type="submit" id="submitBtn" name="updateBtn" value="수정"> 
 						<input type="submit" id="submitBtn" name="deleteBtn" value="삭제">										
 					</c:if>

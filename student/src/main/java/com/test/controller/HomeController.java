@@ -90,16 +90,18 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String join(Model mode, LoginVO vo, HttpServletRequest req, RedirectAttributes rttr) {
+	public String join(Model model, LoginVO vo, HttpServletRequest req, RedirectAttributes rttr) {
 		
 		logger.info("회원가입 처리");
-
+		System.out.println(vo.toString());
+		
 		try {
 			service.join(vo);
-			this.login(mode, vo, req, rttr);
+			this.login(model, vo, req, rttr);
 		} catch(Exception e) {
 			System.out.println(e);
 		}
+		
 		return "redirect:/";
 	}
 	

@@ -18,12 +18,18 @@
 			<input type="password" name="password" placeholder="비밀번호" required>
 			<input type="text" name="name" placeholder="이름" required>
 			<input type="text" name="email" placeholder="이메일" required>
-			<select class="department">
+			<select class="department"  id="department">
 					<option value="">학과를 선택해주세요
 					<c:forEach items="${list }" var="item">
 					<option value="${item.name}">${item.name}
 				</c:forEach>
 			</select>
+			<select id="roleSelect" class="department">
+					<option value="">직업을 선택해주세요
+					<option value="student">학생
+					<option value="professor">교수
+			</select>
+			<input type="hidden" id="role" name="role">
 			<input type="hidden" id="d_name" name="d_name">
 			<input type="submit" value="가입">
 		</form>

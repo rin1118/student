@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="loginMapper">
-
+<mapper namespace="homeMapper">
+	
 	<!-- 학과명 SELECT  -->
 	<select id="getDepartment" resultType="com.test.vo.DepartmentVO">
 		select * from MAJOR order by name
@@ -11,10 +11,10 @@
 	
 	<!-- 회원가입 -->
 	<insert id="join">
-		insert into student (s_no, name, email, d_name, id, password) values (student_seq.nextval, #{name}, #{email}, #{d_name}, #{id}, #{password})
+		insert into member (m_no, name, email, d_name, id, password, role) values (member_seq.nextval, #{name}, #{email}, #{d_name}, #{id}, #{password}, #{role})
 	</insert>
 	
 	<select id="login" resultType="com.test.vo.LoginVO">
-		select s_no, name, email, d_name, id, password from student where id = #{id} and password = #{password}
+		select m_no, name, email, d_name, id, password, role from member where id = #{id} and password = #{password}
 	</select>
 </mapper>

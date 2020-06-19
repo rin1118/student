@@ -29,11 +29,15 @@
 		<nav>
 			<ul>
 				<li><a href="/board/main">공지사항</a></li>
-				<li><a href="/lecture/evaluate/main">강의 평가 (학생)</a></li>
-				<li><a href="/lecture/signUp">수강 신청</a></li>
-				<li><a href="#">성적 확인 (학생)</a></li>
-				<li><a href="/lecture/main">강의 등록 (선생님)</a></li>
-				<li><a href="#">성적 관리 (선생님)</a></li>
+				<li><a href="/lecture/evaluate/main">강의 평가</a></li>
+				<c:if test="${not empty member && member.getRole() == 'student'}">
+					<li><a href="/lecture/signUp">수강 신청</a></li>
+					<li><a href="#">성적 확인 (학생)</a></li>
+				</c:if>
+				<c:if test="${not empty member && member.getRole() == 'professor' }">
+					<li><a href="/lecture/main">강의 등록 (선생님)</a></li>
+					<li><a href="#">성적 관리 (선생님)</a></li>				
+				</c:if>
 				<li><a href="/bamboo/main">대나무숲</a></li>
 			</ul>
 		</nav>

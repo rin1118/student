@@ -7,7 +7,6 @@ const handleUpdate = (e) => {
 	console.log(e);
 	const password = mypageForm.querySelector("#password");
 	console.log(password.value);
-	console.log(`${member}`); 
 }
 
 
@@ -18,9 +17,18 @@ const handleLogin = (e) => {
 const handleJoin = (e) => {
    e.preventDefault();
    console.log(e);
-   const select = joinForm.querySelector(".department");
-   const department = document.getElementById("d_name");
-   department.value = select.value;
+   
+   const department = joinForm.querySelector("#department");
+   const dName = document.getElementById("d_name");
+   
+   const roleSelect = joinForm.querySelector("#roleSelect");
+   const role = joinForm.querySelector("#role");
+   
+   dName.value = department.value;
+   role.value = roleSelect.value;
+   
+   console.log(role.value);
+   
    joinForm.submit();
 }
 

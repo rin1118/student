@@ -58,7 +58,7 @@ public class LectureEvaluateController {
 		HttpSession session = req.getSession();
 		if(session != null) {
 			LoginVO member = (LoginVO) session.getAttribute("member");
-			s_no = member.getS_no();
+			s_no = member.getM_no();
 		}
 		
 		List<LectureVO> bookList = service.lectureSignUpList(s_no);	
@@ -88,7 +88,7 @@ public class LectureEvaluateController {
 		HttpSession session = req.getSession();
 		if(session != null) {
 			LoginVO member = (LoginVO) session.getAttribute("member");
-			s_no = member.getS_no();
+			s_no = member.getM_no();
 		}
 		
 		vo.setS_no(s_no);

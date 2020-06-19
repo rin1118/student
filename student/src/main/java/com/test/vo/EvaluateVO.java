@@ -3,21 +3,32 @@ package com.test.vo;
 import java.util.Date;
 
 public class EvaluateVO {
-	private int e_no;
-	private int l_no;
-	private int s_no;
+	private int e_no; 	// 강의 평가 글 번호
+	private int l_no; 		// 강의 번호
+	private int s_no;		// 학번이였음 (아마 안씀)
+	private int m_no;		// 멤버번호 (학번 대신 쓰임)
 	private String description;
 	private Date regDate;
 	private String title;
 	private String professor;
 	private String category;
 	
+	
 	@Override
 	public String toString() {
-		return "EvaluateVO [e_no=" + e_no + ", l_no=" + l_no + ", s_no=" + s_no + ", description=" + description
-				+ ", regDate=" + regDate + ", title=" + title + ", professor=" + professor + ", category=" + category
-				+ "]";
+		return "EvaluateVO [e_no=" + e_no + ", l_no=" + l_no + ", s_no=" + s_no + ", m_no=" + m_no + ", description="
+				+ description + ", regDate=" + regDate + ", title=" + title + ", professor=" + professor + ", category="
+				+ category + "]";
 	}
+
+	public int getM_no() {
+		return m_no;
+	}
+
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
+	}
+
 	public int getE_no() {
 		return e_no;
 	}

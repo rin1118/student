@@ -2,19 +2,19 @@ package com.test.vo;
 
 //회원가입 관련 VO
 public class LoginVO {
-	int s_no;
+	int m_no;
 	String name;
 	String email;
 	String d_name;
 	String id;
 	String password;
+	String role;
 	
-	
-	public int getS_no() {
-		return s_no;
+	public int getM_no() {
+		return m_no;
 	}
-	public void setS_no(int s_no) {
-		this.s_no = s_no;
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
 	}
 	public String getName() {
 		return name;
@@ -47,9 +47,21 @@ public class LoginVO {
 		this.password = password;
 	}
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "LoginVO [s_no=" + s_no + ", name=" + name + ", email=" + email + ", d_name=" + d_name + ", id=" + id
-				+ ", password=" + password + "]";
+		return "LoginVO [m_no=" + m_no + ", name=" + name + ", email=" + email + ", d_name=" + d_name + ", id=" + id
+				+ ", password=" + password + ", role=" + role + "]";
 	}
+	
+	
 }
+
+
