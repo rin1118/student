@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.vo.EvaluateVO;
+import com.test.vo.GradeVO;
 import com.test.vo.LectureBookVO;
 import com.test.vo.LectureVO;
 import com.test.vo.SearchVO;
@@ -26,7 +27,13 @@ public class LectureDAOImpl implements LectureDAO {
 	public List<LectureVO> getList() {
 		return sqlSession.selectList("lectureMapper.getList");
 	}
-
+	
+	@Override
+	public List<LectureVO> registerList(int p_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("lectureMapper.registerList", p_no);
+	}
+	
 	@Override
 	public LectureVO selectOne(int l_no) {
 		return sqlSession.selectOne("lectureMapper.selectOne", l_no);
@@ -89,5 +96,24 @@ public class LectureDAOImpl implements LectureDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("lectureMapper.search", vo);
 	}
+
+	@Override
+	public List<GradeVO> gradeChk(int m_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("lectureMapper.gradeChk", m_no);
+	}
+
+	@Override
+	public List<GradeVO> studentList(int l_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("lectureMapper.studentList", l_no);
+	}
+
+	@Override
+	public void gradeUpdate(GradeVO vo) {
+		sqlSession.update("lectureMapper.gradeUpdate", vo);
+	}
+
+
 
 }

@@ -3,12 +3,18 @@ package com.test.vo;
 public class LectureVO {
 	
 	private int l_no;
+	private int p_no;
 	private String title;
 	private String description;
 	private String category;
 	private String professor;
 	
-	
+	public int getP_no() {
+		return p_no;
+	}
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
 	public int getL_no() {
 		return l_no;
 	}

@@ -9,6 +9,10 @@
 		select * from lecture order by l_no
 	</select>
 
+	<select id="registerList" resultType="com.test.vo.LectureVO">
+		select * from lecture where p_no = #{p_no} order by l_no 
+	</select>
+
 	<select id="selectOne" resultType="com.test.vo.LectureVO">
 		select * from lecture where
 		l_no = #{l_no}
@@ -19,13 +23,15 @@
 		title,
 		description,
 		professor,
-		category
+		category,
+		p_no
 		)
 		values(lecture_seq.nextval,
 		#{title},
 		#{description},
 		#{professor},
-		#{category})
+		#{category},
+		#{p_no})
 	</insert>
 
 	<update id="update" parameterType="com.test.vo.LectureVO">
@@ -94,4 +100,33 @@
 	<delete id="evaluateDelete">
 		delete from lecture_evaluate where e_no = #{e_no}
 	</delete>
+	
+	<!-- 성적 관리  -->
+	
+	<!-- 성적 확인 (학생) -->
+	<select id="gradeChk" resultType="com.test.vo.GradeVO">
+		select *
+		from lecturebook
+		join lecture
+		on lecture.l_no = lecturebook.l_no
+		and lecturebook.s_no = #{m_no}
+		order by lecture.title
+	</select>
+	
+	<!-- 성적 평가 (해당 강의를 수강중인 학생 목록 select )-->	
+	<select id="studentList" resultType="com.test.vo.GradeVO">
+		select * 
+		from lecturebook
+		join member
+		on member.m_no = lecturebook.s_no
+		where l_no = #{l_no}
+		order by member.name
+	</select>
+	
+	<update id="gradeUpdate">
+		update lecturebook 
+		SET grade=#{grade} 
+		where s_no = #{m_no}
+		and l_no = #{l_no}
+	</update>
 </mapper>

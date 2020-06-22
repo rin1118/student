@@ -29,10 +29,15 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	LectureService service;
 
 	@RequestMapping(value = "/lecture/main", method = RequestMethod.GET)
-	public String main(Model model) throws Exception {
+	public String main(Model model, HttpServletRequest req) throws Exception {
 		logger.info("강의(교수) 메인");
 		
-		List<LectureVO> list = service.getList();
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO) session.getAttribute("member");
+		
+		int p_no = member.getM_no();
+		
+		List<LectureVO> list = service.registerList(p_no);
 		
 		model.addAttribute("list", list);
 		
@@ -40,8 +45,12 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	}
 	
 	@RequestMapping(value = "/lecture/register", method = RequestMethod.GET)
-	public String registerView(Model model) throws Exception {
+	public String registerView(Model model, HttpServletRequest req) throws Exception {
 		logger.info("강의 등록 뷰 화면");
+		
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO) session.getAttribute("member");
+		model.addAttribute("member", member);
 		
 		return "/lecture/lectureRegister";
 	}

@@ -14,13 +14,15 @@
 	<section class="main">
 		<div class="pageTitle">📕 강의 목록</div>
 		<a href="/lecture/register" class="writeBtn">등록</a>
-		<table class="listItem">  
-			<th>강의번호</th>
-			<th>분류</th>
-			<th>강의명</th>
-			<th>내용</th>
-			<th>교수명</th>
-			<th></th>
+		<table class="listItem">
+			<tr>  
+				<th>강의번호</th>
+				<th>분류</th>
+				<th>강의명</th>
+				<th>내용</th>
+				<th>교수명</th>
+				<th></th>
+			</tr>	
 			<c:forEach items="${list}" var="item">
 					<tr>
 						<td>${item.l_no}</td>

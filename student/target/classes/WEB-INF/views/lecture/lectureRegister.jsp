@@ -19,8 +19,9 @@
 					<option value="교양">교양
 				</select>
 				<input class="lectureInfo" type="text" name="title" placeholder="강의명" required>
-				<input class="lectureInfo" type="text" name="professor" placeholder="교수명" required>
+				<input class="lectureInfo" type="text" name="professor" value="${member.getName() }" placeholder="교수명" required>
 				<textarea name="description" placeholder="강의 설명"></textarea>
+				<input type="hidden" name="p_no" value=${member.getM_no() }>
 				<input type="submit" value="등록" class="registerSubmit">
 			</form>
 		</div>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.test.dao.LectureDAO;
 import com.test.vo.EvaluateVO;
+import com.test.vo.GradeVO;
 import com.test.vo.LectureBookVO;
 import com.test.vo.LectureVO;
 import com.test.vo.SearchVO;
@@ -23,7 +24,13 @@ public class LectureServiceImpl implements LectureService{
 		
 		return dao.register(lectureVO);
 	}
-
+	
+	@Override
+	public List<LectureVO> registerList(int p_no) {
+		// TODO Auto-generated method stub
+		return dao.registerList(p_no);
+	}
+	
 	@Override
 	public List<LectureVO> getList() {
 		
@@ -95,5 +102,24 @@ public class LectureServiceImpl implements LectureService{
 		// TODO Auto-generated method stub
 		return dao.search(vo);
 	}
+
+	@Override
+	public List<GradeVO> gradeChk(int m_no) {
+		// TODO Auto-generated method stub
+		return dao.gradeChk(m_no);
+	}
+
+	@Override
+	public List<GradeVO> studentList(int l_no) {
+		// TODO Auto-generated method stub
+		return dao.studentList(l_no);
+	}
+
+	@Override
+	public void gradeUpdate(GradeVO vo) {
+		dao.gradeUpdate(vo);
+	}
+
+	
 
 }
