@@ -31,15 +31,18 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	@RequestMapping(value = "/lecture/main", method = RequestMethod.GET)
 	public String main(Model model, HttpServletRequest req) throws Exception {
 		logger.info("강의(교수) 메인");
-		
-		HttpSession session = req.getSession();
-		LoginVO member = (LoginVO) session.getAttribute("member");
-		
-		int p_no = member.getM_no();
-		
-		List<LectureVO> list = service.registerList(p_no);
-		
-		model.addAttribute("list", list);
+		try {
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			
+			int p_no = member.getM_no();
+			
+			List<LectureVO> list = service.registerList(p_no);
+			
+			model.addAttribute("list", list);
+		}catch(NullPointerException e) {
+			return "redirect:/";
+		}
 		
 		return "/lecture/main";
 	}
@@ -47,11 +50,14 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 	@RequestMapping(value = "/lecture/register", method = RequestMethod.GET)
 	public String registerView(Model model, HttpServletRequest req) throws Exception {
 		logger.info("강의 등록 뷰 화면");
-		
-		HttpSession session = req.getSession();
-		LoginVO member = (LoginVO) session.getAttribute("member");
-		model.addAttribute("member", member);
-		
+		try {
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			model.addAttribute("member", member);
+		} catch(NullPointerException e) {
+			return "redirect:/";
+		}
+				
 		return "/lecture/lectureRegister";
 	}
 	
@@ -107,28 +113,32 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		logger.info("수강신청 메인");
 		
 		String url="";
-		
-		HttpSession session = req.getSession();
-		int s_no=0; //로그인 미구현이라 임의의 값 넣어줌, 구현후에는 학번 던질꺼임
-		
-		if(session != null) {
-			if(session.getAttribute("member") == null) {
-				url = "redirect:/login";
+		try {
+			HttpSession session = req.getSession();
+			int s_no=0; //로그인 미구현이라 임의의 값 넣어줌, 구현후에는 학번 던질꺼임
+			
+			if(session != null) {
+				if(session.getAttribute("member") == null) {
+					url = "redirect:/login";
+				} else {
+					url = "/lectureBook/main";
+					LoginVO member = (LoginVO) session.getAttribute("member");
+					s_no = member.getM_no();				
+				}
 			} else {
-				url = "/lectureBook/main";
-				LoginVO member = (LoginVO) session.getAttribute("member");
-				s_no = member.getM_no();				
+				url = "redirect:/login";
 			}
-		} else {
-			url = "redirect:/login";
+			
+			List<LectureVO> lectureList = service.getList();
+			model.addAttribute("lectureList", lectureList);
+			
+			List<LectureVO> bookList = service.lectureSignUpList(s_no);	
+			model.addAttribute("bookList", bookList);
+
+		}catch(NullPointerException e) {
+			return "redirect:/";
 		}
 		
-		List<LectureVO> lectureList = service.getList();
-		model.addAttribute("lectureList", lectureList);
-		
-		List<LectureVO> bookList = service.lectureSignUpList(s_no);	
-		model.addAttribute("bookList", bookList);
-
 		return url;
 	}
 	
@@ -164,8 +174,7 @@ private static final Logger logger = LoggerFactory.getLogger(BoardController.cla
 		
 		int l_no = bookVO.getL_no();
 		service.signUpCancel(l_no);
-		
-//		return l_no;
+
 	}
 
 }

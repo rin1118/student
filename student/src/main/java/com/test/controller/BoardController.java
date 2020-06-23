@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.test.service.BoardService;
 import com.test.vo.BoardVO;
 
-/**
- * Handles requests for the application home page.
- */
-
-
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {

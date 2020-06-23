@@ -19,7 +19,6 @@
 				<th>강의번호</th>
 				<th>분류</th>
 				<th>강의명</th>
-				<th>내용</th>
 				<th>교수명</th>
 				<th></th>
 			</tr>	
@@ -28,7 +27,6 @@
 						<td>${item.l_no}</td>
 						<td>${item.category}</td>
 						<td>${item.title}</td>
-						<td>${item.description}</td>
 						<td>${item.professor}</td>
 						<td>
 							<a href="/lecture/update?id=${item.l_no}" class="updateBtn">수정</a>

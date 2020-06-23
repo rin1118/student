@@ -15,12 +15,11 @@
 .listItem {
 	background-color: white;
     border-radius: 12px;
-    padding: 25px;
-    width: 1024px;
+    padding: 35px 15px;
+    width: 900px;
     text-align: center;
-    margin: 85px auto;
-	box-shadow: 0px 12px 22px 2px #e3e3e3a6;
-	font-family: 'JSDongkang-Regular';
+	margin: 92px auto;
+    box-shadow: 0px 6px 15px 5px #e3e3e394;
 }
 
 .listItem tr{
@@ -28,11 +27,23 @@
 }
 
 .listItem th:nth-child(1) {
-	width: 13%;
+	width: 180px;
+}
+
+.listItem th:nth-child(2) {
+	width: 95px;
+}
+
+.listItem th:nth-child(3) {
+	width: 280px;
 }
 
 .listItem th:nth-child(4) {
-	width: 45%;
+	width: 150px;
+}
+
+.listItem th:nth-child(5) {
+	width: 150px;
 }
 
 .registerForm {
@@ -101,7 +112,7 @@
     font-family: 'Montserrat', sans-serif;
     position: absolute;
     top: 172px;
-    right: 85px;
+    right: 142px;
 }
 
 .submitBtn {
