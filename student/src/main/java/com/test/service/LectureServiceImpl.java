@@ -96,6 +96,12 @@ public class LectureServiceImpl implements LectureService{
 	public void evaluateUpdate(EvaluateVO vo) {
 		dao.evaluateUpdate(vo);
 	}
+	
+	@Override
+	public List<EvaluateVO> writeList(int m_no) {
+		// TODO Auto-generated method stub
+		return dao.writeList(m_no);
+	}
 
 	@Override
 	public List<EvaluateVO> search(SearchVO vo) {
@@ -119,6 +125,7 @@ public class LectureServiceImpl implements LectureService{
 	public void gradeUpdate(GradeVO vo) {
 		dao.gradeUpdate(vo);
 	}
+
 
 	
 

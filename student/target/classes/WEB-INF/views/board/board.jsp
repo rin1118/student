@@ -14,12 +14,16 @@
 
 <section class="main">
 	<div class="pageTitle">📢 공지사항</div>
-	<a href="/board/write" class="writeBtn">작성</a>
+	<c:if test="${member.role == 'admin'}">
+		<a href="/board/write" class="writeBtn">작성</a>
+	</c:if>
 	<table class="listItem">
-		<th>글번호</th>
-		<th>제목</th>
-		<th>작성자</th>
-		<th>작성일자</th>
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일자</th>
+		</tr>
 		<c:forEach items="${list}" var="item">
 				<tr>
 					<td>${item.b_no}</td>

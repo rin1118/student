@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 * {
 	box-sizing: border-box;
@@ -32,6 +33,7 @@ body {
 input {
 	border-radius: 6px;
 	border: none;
+	font-family: 'SDongkang-Regular';
 }
 
 input[type="submit"] {
@@ -40,6 +42,11 @@ input[type="submit"] {
 
 button {
 	cursor: pointer;
+	font-family: 'SDongkang-Regular';
+}
+
+textarea {
+	font-family: 'SDongkang-Regular';
 }
 
 .header {
@@ -104,6 +111,7 @@ button {
 	background-color: #4f96f2;
 	color: white;
 	font-size: 15px;
+	font-family: 'Jua', sans-serif;
 }
 	
 .main {
@@ -133,4 +141,16 @@ button {
     border-radius: 6px;
     padding: 8px 10px;
     border: none;
+}
+
+button#memberDropBtn {
+	width: 380px;
+    background-color: #ff1c1cba;
+    color: white;
+    font-size: 15px;
+    font-family: 'Jua', sans-serif;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
 }

@@ -26,11 +26,13 @@
 				</c:forEach>
 			</select>
 			<input type="hidden" id="d_name" name="d_name">
-			<input type="submit" value="확인">
+			<input type="submit" id="mypageSubBtn" value="확인">
 		</form>
+		<button id="memberDropBtn">회원 탈퇴</button> 
 	</section>
 	<footer class="footer"></footer>
 </body>
 <script src="/resources/js/join.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 </html>

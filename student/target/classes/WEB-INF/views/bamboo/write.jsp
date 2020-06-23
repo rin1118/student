@@ -17,7 +17,7 @@
 			<div class="writeContainer">
 				<form class="writeForm" action="/bamboo/write" method="POST">
 					<input type="text" name="title" class="itemTitle" placeholder="제목">
-					<div class="writeInfo">
+					<div class="writerInfo">
 						<input type="text" name="writer" placeholder="작성자">
 						<input type="password" name="password" placeholder="비밀번호">
 					</div>

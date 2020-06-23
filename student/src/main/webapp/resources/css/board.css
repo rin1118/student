@@ -92,10 +92,20 @@
 .registerSubmit {
 	background-color: #4f96f2;
     color: white;
-    width: 94px;
+    width: 70px;
     text-align: center;
     border: none;
-    font-size: 15px;
+    font-size: 14px;
     margin: 0 auto;
     padding: 5px 0px;
 }
+
+#boardForm span{
+	margin: 7px;
+}
+
+#boardDeleteBtn {
+	background-color: #ff1c1cba;
+}
+
+#

@@ -90,6 +90,12 @@ public class LectureDAOImpl implements LectureDAO {
 	public void evaluateUpdate(EvaluateVO vo) {
 		sqlSession.update("lectureMapper.evaluateUpdate", vo);
 	}
+	
+	@Override
+	public List<EvaluateVO> writeList(int m_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("lectureMapper.writeList", m_no);
+	}
 
 	@Override
 	public List<EvaluateVO> search(SearchVO vo) {
@@ -113,6 +119,8 @@ public class LectureDAOImpl implements LectureDAO {
 	public void gradeUpdate(GradeVO vo) {
 		sqlSession.update("lectureMapper.gradeUpdate", vo);
 	}
+
+	
 
 
 

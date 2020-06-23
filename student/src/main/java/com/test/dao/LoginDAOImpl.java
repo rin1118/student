@@ -31,4 +31,9 @@ public class LoginDAOImpl implements LoginDAO{
 		return sqlSession.selectOne("homeMapper.login", vo);
 	}
 
+	@Override
+	public void memberDrop(int m_no) {
+		sqlSession.delete("homeMapper.memberDrop", m_no);
+	}
+
 }

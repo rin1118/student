@@ -23,7 +23,7 @@ input[type="submit"] {
 
 .evaluateItem {
 	background-color: white;
-	width: 800px;
+	width: 750px;
     margin: 0 auto;
     border-radius: 30px 30px 30px 0px;
     padding: 30px 40px;    
@@ -73,7 +73,7 @@ input[type="submit"] {
 
 
 .search {
-    width: 638px;
+    width: 580px;
     padding: 12px;
     margin-bottom: 90px;
     border: 4px solid #0072ff;
@@ -126,7 +126,7 @@ input#submitBtn:last-child {
     font-family: 'Jua', 'Montserrat', sans-serif;
     position: absolute;
     top: 284px;
-    right: 197px;
+    right: 223px;
 }
 
 .listItem {
@@ -157,4 +157,9 @@ input#submitBtn:last-child {
 
 .listItem th:nth-child(4) {
 	width: 158px;
+}
+
+form.searchForm {
+    width: 750px;
+    margin: 0 auto;
 }

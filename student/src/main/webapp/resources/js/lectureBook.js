@@ -31,6 +31,7 @@ function handleDelete (e) {
 		url : "/lecture/signUpCancel",
 		success : function(data) {
 			f.remove();
+			swal("수강 취소", "성공", "success");
 			signUpItem.forEach(item => {
 				if(item.id == f.id){
 					const submit = item.querySelector("#submitBtn");
@@ -60,6 +61,8 @@ function handleSubmit(e){
 	url : "/lecture/signUp",
 	success : function(data) {
 		result.innerHTML = "";
+		
+		swal("수강 신청", "성공", "success");
 
 		for(let i=0;i<data.length;i++){
 			const {l_no, title, description, category, professor} = data[i];

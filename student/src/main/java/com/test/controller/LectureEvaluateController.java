@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.service.LectureService;
 import com.test.vo.EvaluateVO;
@@ -163,5 +164,22 @@ public class LectureEvaluateController {
 		}
 		
 		return "/lectureEvaluate/main";
+	}
+	
+	@RequestMapping(value = "/lecture/evaluate/writeList", method = RequestMethod.GET)
+	@ResponseBody
+	public Object writeBlock(Model model, HttpServletRequest req) throws Exception {
+		logger.info("수강 강의 목록 중복 확인");
+		 
+		try {
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			List<EvaluateVO> list = service.writeList(member.getM_no());			
+			return list;
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		}
+				
+		return null;
 	}
 }

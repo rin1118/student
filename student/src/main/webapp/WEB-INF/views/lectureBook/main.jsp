@@ -45,4 +45,5 @@
 </body>
 <script src="/resources/js/lectureBook.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>

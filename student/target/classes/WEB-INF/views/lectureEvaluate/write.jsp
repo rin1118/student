@@ -13,11 +13,13 @@
 	<%@include file="../homeNav.jsp"%>
 	<section class="main">	
 		<div class="pageTitle">📖 수강 강의목록</div>
-		<table class="listItem">
-			<th>강의분류</th>
-			<th>강의명</th>
-			<th>교수명</th>
-			<th></th>
+		<table class="listItem" id="lectureBookList">
+			<tr>
+				<th>강의분류</th>
+				<th>강의명</th>
+				<th>교수명</th>
+				<th></th>
+			</tr>
 			<c:forEach items="${bookList}" var="item">
 					<form method="get" action="/lecture/evaluate/writeView">	
 						<tr>
@@ -32,10 +34,13 @@
 							</td>
 							<td><input type="submit" value="평가 작성"></td>
 						</tr>
-						<input type="hidden" name="l_no" value="${item.l_no }">
+						<input type="hidden" id="l_no" name="l_no" value="${item.l_no }">
 					</form>
 			</c:forEach>
 		</table>
 	</section>
 </body>
+<script src="/resources/js/evaluate.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </html>

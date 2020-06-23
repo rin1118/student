@@ -32,4 +32,9 @@ public class LoginServiceImpl implements LoginService{
 		return dao.login(vo);
 	}
 
+	@Override
+	public void memberDrop(int m_no) {
+		dao.memberDrop(m_no);
+	}
+
 }

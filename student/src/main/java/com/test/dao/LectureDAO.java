@@ -30,6 +30,7 @@ public interface LectureDAO {
 	public void evaluateWrite(EvaluateVO vo);
 	public void evaluateDelete(int e_no);
 	public void evaluateUpdate(EvaluateVO vo);
+	public List<EvaluateVO> writeList(int m_no);
 	
 	//성적 관리 
 	public List<GradeVO> gradeChk(int m_no);

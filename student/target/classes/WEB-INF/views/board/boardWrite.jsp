@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@
 		<div class="registerForm">
 			<form method="post" action="/board/write">
 				<input type="text" name="title" class="writeInfo" required placeholder="제목">
-				<input type="text" name="writer" class="writeInfo" required placeholder="작성자"]>
+				<input type="text" name="writer" class="writeInfo"  value="${member.getName()}" readonly>
 				<textarea name="content" placeholder="내용"></textarea>
 				<input type="submit" value="확인" class="registerSubmit">
 			</form>

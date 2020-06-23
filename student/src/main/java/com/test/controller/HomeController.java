@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.test.service.LoginService;
@@ -102,6 +103,21 @@ public class HomeController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/memberDrop", method = RequestMethod.POST)
+	@ResponseBody
+	public void memberDrop(Model model, HttpServletRequest req, RedirectAttributes rttr) {
+		
+		logger.info("회원 탈퇴 처리");
+		
+		try {
+			HttpSession session = req.getSession();		
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			service.memberDrop(member.getM_no());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		} 
 	}
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)

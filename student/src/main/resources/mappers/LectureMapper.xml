@@ -101,6 +101,10 @@
 		delete from lecture_evaluate where e_no = #{e_no}
 	</delete>
 	
+	<select id="writeList" resultType="com.test.vo.EvaluateVO">
+		select * from lecture_evaluate where s_no = #{m_no}
+	</select>
+	
 	<!-- 성적 관리  -->
 	
 	<!-- 성적 확인 (학생) -->
