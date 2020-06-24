@@ -13,16 +13,20 @@
 	<%@include file="homeNav.jsp" %>
 	<section class="main">
 		<div class="pageTitle">💡 로그인</div>
-		<c:if test="${msg == false }">
-			<div id="msg">
-				<span>아이디나 비밀번호를 확인해주세요</span>
-			</div>		
-		</c:if>
 		<form class="loginForm" id="loginForm" method="post" action="/login">
 			<input type="text" name="id" placeholder="아이디">
 			<input type="password" name="password" placeholder="비밀번호">
+			<c:if test="${msg == false }">
+				<div id="msg">
+					<span>아이디나 비밀번호를 확인해 주세요.</span>
+				</div>		
+			</c:if>
 			<input type="submit" value="로그인">
 		</form>
+		<span>
+			<a href="#">🔒 아이디</a>
+			<a href="#">비밀번호 찾기</a>		
+		</span>
 	</section>
 	<footer class="footer">
 	</footer>

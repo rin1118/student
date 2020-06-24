@@ -29,7 +29,6 @@
 			</div>
 			
 			<c:if test= "${search != null}">
-					<span>검색 결과 : ${count }건</span>
 					<c:forEach items="${search }" var="item">
 					<div class="message">
 						<ul class="messageItem">

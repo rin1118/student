@@ -19,7 +19,19 @@
 		delete from member where m_no = #{m_no}
 	</delete>
 	
+	<!-- 로그인 -->
 	<select id="login" resultType="com.test.vo.LoginVO">
 		select m_no, name, email, d_name, id, password, role from member where id = #{id} and password = #{password}
 	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<select id="getPw" resultType="String">
+		select password from member where m_no = #{m_no}
+	</select>
+	
+	<update id="pwUpdate">
+		update member 
+		set password = #{password}
+  		where m_no = #{m_no}
+	</update>
 </mapper>

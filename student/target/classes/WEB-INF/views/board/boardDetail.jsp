@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +22,12 @@
 			<span>내용</span> 
 			<textarea name="content" readOnly >${content }</textarea>
 			<input type="hidden" name="id" value="${id}">
-			<span class="submitContainer">
-				<input type="submit" value="수정" id="boardUpdateBtn" class="registerSubmit">
-				<input type="submit" value="삭제" id="boardDeleteBtn" class="registerSubmit">			
-			</span>
+			<c:if test="${member.getRole() == 'admin' }">
+				<span class="submitContainer">
+					<input type="submit" value="수정" id="boardUpdateBtn" class="registerSubmit">
+					<input type="submit" value="삭제" id="boardDeleteBtn" class="registerSubmit">			
+				</span>			
+			</c:if>
 		</form>
 	</div>
 </section>

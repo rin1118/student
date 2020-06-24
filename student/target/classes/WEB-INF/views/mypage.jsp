@@ -15,20 +15,16 @@
 		<div class="pageTitle">💡 마이페이지</div>
 		<form  id="mypageForm" class="joinForm" action="/mypage" method="post" >
 			<input type="text" name="id" placeholder="아이디" maxlength="" value="${member.getId() }" readonly>
-			<input type="password" id="password" name="password" placeholder="기존 비밀번호"  required>
-			<input type="password" id="passwordChk" name="passwordChk" placeholder="변경할 비밀번호 " required>
-			<input type="text" name="name" placeholder="이름"  value="${member.getName() }" required>
-			<input type="text" name="email" placeholder="이메일"  value="${member.getEmail() }"required>
+			<input type="text" name="name" placeholder="이름"  value="${member.getName() }" readonly>
+			<input type="text" name="email" placeholder="이메일"  value="${member.getEmail() }"readonly>
 			<select class="department">
 					<option value="${member.getD_name() }">${member.getD_name() }
-					<c:forEach items="${list }" var="item">
-					<option value="${item.name}">${item.name}
-				</c:forEach>
 			</select>
 			<input type="hidden" id="d_name" name="d_name">
 			<input type="submit" id="mypageSubBtn" value="확인">
+			<a href="/changePw" class="pwChage">🔒 비밀번호 변경하기</a>
+			<button id="memberDropBtn">회원 탈퇴</button> 			
 		</form>
-		<button id="memberDropBtn">회원 탈퇴</button> 
 	</section>
 	<footer class="footer"></footer>
 </body>

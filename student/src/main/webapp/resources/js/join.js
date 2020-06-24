@@ -2,6 +2,52 @@ const joinForm= document.getElementById("joinForm");
 const loginForm= document.getElementById("loginForm");
 const mypageForm = document.getElementById("mypageForm");
 const memberDropBtn = document.getElementById("memberDropBtn");
+const changePwForm = document.getElementById("changePwForm");
+
+const handleChangePw = (e) => {
+	e.preventDefault();
+	console.log(e);
+	
+	const pw = changePwForm.querySelector("#pw");
+	const changePw = changePwForm.querySelector("#changePw");
+	const checkPw = changePwForm.querySelector("#changePwChk");
+
+	if(changePw.value != checkPw.value){
+		swal('변경할 비밀번호를 확인해주세요.');
+		checkPw.value = "";
+	} else if(changePw.value == checkPw.value){
+		const password = {
+										password : changePw.value
+									};
+		
+		$.ajax({
+			type : "get",
+			dataType : "json",
+			url : "/getPw",
+			success : function(data) {
+				if(data == pw.value) {								
+						$.ajax({
+							type : "post",
+							data: password,
+							url : "/changePw",
+							success : function(data) {
+								swal({
+									  title: "비밀번호 변경",
+									  text: "성공!",
+									  icon: "success",
+									});	
+								setTimeout("location.replace('/')",2000);
+							} ,error: function(){
+							     alert("에러@@@@@@");
+								}	
+						});			
+				}
+			} ,error: function(){
+			     alert("에러@@@@@@");
+				}	
+		});
+	}
+}
 
 const handleDrop = (e) => {
 	console.log(e);
@@ -81,4 +127,8 @@ if(mypageForm){
 
 if(memberDropBtn) {
 	memberDropBtn.addEventListener("click", handleDrop);
+}
+
+if(changePwForm){
+	changePwForm.addEventListener("submit", handleChangePw);
 }

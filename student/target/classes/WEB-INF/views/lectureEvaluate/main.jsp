@@ -26,7 +26,9 @@
 					<input type="submit" name="searchBtn" class="searchBtn" value="검색">		
 				</form>
 			</div>
-			<a href="/lecture/evaluate/write" class="writeBtn">작성</a>
+			<c:if test="${member.getRole()=='student' }">
+				<a href="/lecture/evaluate/write" class="writeBtn">작성</a>
+			</c:if>
 			<br>
 			
 			<c:if test="${not empty search}">
@@ -47,8 +49,10 @@
 							<input type="text" name="professor" value="${item.professor}" readOnly> 
 						</span>
 						<textarea name="description" readOnly>${item.description}</textarea> 
-						<input type="submit" id="submitBtn" name="updateBtn" value="수정"> 
-						<input type="submit" id="submitBtn" name="deleteBtn" value="삭제">					
+						<c:if test="${item.s_no == member.getM_no() || member.getRole() == 'admin'}">
+							<input type="submit" id="submitBtn" name="updateBtn" value="수정"> 
+							<input type="submit" id="submitBtn" name="deleteBtn" value="삭제">					
+						</c:if>
 					</form>
 				</c:forEach>
 			</c:if>

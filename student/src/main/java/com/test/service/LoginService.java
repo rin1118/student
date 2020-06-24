@@ -15,4 +15,9 @@ public interface LoginService {
 	
 	//로그인
 	public LoginVO login(LoginVO vo);
+	
+	//비밀번호 변경 (db에서 비밀번호 받아오기)
+	public String getPw(int m_no);
+	// 비밀번호 변경 처리
+	public void changePw(LoginVO vo);
 }

@@ -18,12 +18,17 @@
 					<option value="전선">전선
 					<option value="교양">교양
 				</select>
-				강의명 <input type="text" name="title" value="${title }" class="lectureInfo" required>
-				교수명 <input type="text" name="professor" value="${professor}" class="lectureInfo" readOnly>
-				강의 내용 <textarea name="description">${description}</textarea>
+				강의명 
+				<input type="text" name="title" value="${title }" class="lectureInfo" required>
+				교수명 
+				<input type="text" name="professor" value="${professor}" class="lectureInfo" readOnly>
+				강의 내용 
+				<textarea name="description">${description}</textarea>
 				<input type="hidden" name="l_no" value="${id }">
-				<input type="submit" id="updateBtn" class="submitBtn update" value="확인">
-				<input type="submit" id="deleteBtn" class="submitBtn delete" value="삭제">
+				<span>
+					<input type="submit" id="updateBtn" class="submitBtn update" value="확인">
+					<input type="submit" id="deleteBtn" class="submitBtn delete" value="삭제">				
+				</span>
 			</form>
 			<a href="#">취소</a>
 		</div>	

@@ -129,8 +129,12 @@ li.messageBox {
     font-size: 13px;
 }
 
-.writeForm input {
+.writeForm input:not(.password) {
 	padding: 10px;
+	font-family: 'JSDongkang-Regular';
+}
+
+input[type="password"]::placeholder {
 	font-family: 'JSDongkang-Regular';
 }
 

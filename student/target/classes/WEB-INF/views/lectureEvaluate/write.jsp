@@ -20,6 +20,11 @@
 				<th>교수명</th>
 				<th></th>
 			</tr>
+			<c:if test="${empty bookList }">
+				<tr>
+					<td colspan="4" class="notLecutreBook">수강중인 강의가 없습니다.</td>
+				</tr>
+			</c:if>
 			<c:forEach items="${bookList}" var="item">
 					<form method="get" action="/lecture/evaluate/writeView">	
 						<tr>

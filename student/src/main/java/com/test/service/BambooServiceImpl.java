@@ -21,7 +21,6 @@ public class BambooServiceImpl implements BambooService {
 
 	@Override
 	public List<BambooVO> getList() {
-	
 		return dao.getList();
 	}
 

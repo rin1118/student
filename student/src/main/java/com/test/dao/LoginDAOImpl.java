@@ -36,4 +36,14 @@ public class LoginDAOImpl implements LoginDAO{
 		sqlSession.delete("homeMapper.memberDrop", m_no);
 	}
 
+	@Override
+	public String getPw(int m_no) {
+		return sqlSession.selectOne("homeMapper.getPw", m_no);
+	}
+
+	@Override
+	public void changePw(LoginVO vo) {
+		sqlSession.update("homeMapper.pwUpdate", vo);
+	}
+
 }

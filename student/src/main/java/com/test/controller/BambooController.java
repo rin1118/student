@@ -92,7 +92,6 @@ public class BambooController {
 		vo.setCategory(category);		
 		List<BambooVO> search = service.search(vo);
 
-		model.addAttribute("count", search.size());
 		model.addAttribute("search", search);
 		
 		return "/bamboo/main";

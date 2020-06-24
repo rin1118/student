@@ -115,6 +115,7 @@ public class HomeController {
 			HttpSession session = req.getSession();		
 			LoginVO member = (LoginVO) session.getAttribute("member");
 			service.memberDrop(member.getM_no());
+			session.invalidate();
 		} catch(NullPointerException e) {
 			System.out.println(e);
 		} 
@@ -126,5 +127,52 @@ public class HomeController {
 		logger.info("마이페이지 뷰 화면");
 		
 		return "mypage";
+	}
+	
+	@RequestMapping(value = "/changePw", method = RequestMethod.GET)
+	public String changePwView() {
+		
+		logger.info("비밀번호 변경 뷰 화면");
+		
+		return "changePw";
+	}
+	
+	@RequestMapping(value = "/changePw", method = RequestMethod.POST)
+	@ResponseBody
+	public void changePw(String password, HttpServletRequest req) {
+		
+		logger.info("비밀번호 변경 처리");
+		LoginVO vo = new LoginVO();
+		
+		try {
+			HttpSession session = req.getSession();		
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			
+			vo.setM_no(member.getM_no());
+			vo.setPassword(password);
+			service.changePw(vo);
+			
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		} 
+	}
+	
+	@RequestMapping(value = "/getPw", method = RequestMethod.GET)
+	@ResponseBody
+	public String getPw(HttpServletRequest req) {
+		
+		logger.info("DB에서 비밀번호 select");
+		
+		String pw="";
+		
+		try {
+			HttpSession session = req.getSession();		
+			LoginVO member = (LoginVO) session.getAttribute("member");
+			pw = service.getPw(member.getM_no());
+		} catch(NullPointerException e) {
+			System.out.println(e);
+		} 
+		
+		return pw;
 	}
 }

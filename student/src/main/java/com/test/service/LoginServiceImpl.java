@@ -37,4 +37,15 @@ public class LoginServiceImpl implements LoginService{
 		dao.memberDrop(m_no);
 	}
 
+	@Override
+	public String getPw(int m_no) {
+		// TODO Auto-generated method stub
+		return dao.getPw(m_no);
+	}
+
+	@Override
+	public void changePw(LoginVO vo) {
+		dao.changePw(vo);
+	}
+
 }

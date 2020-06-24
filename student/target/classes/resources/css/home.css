@@ -107,6 +107,14 @@ textarea {
 	margin: 10px;
 }
 
+div#msg {
+    color: #ff1c1cba;
+    font-family: auto;
+    font-size: 15px;
+    margin: 9px;
+    font-family: 'Jua', sans-serif;
+}
+
 .joinForm input[type="submit"], .loginForm input[type="submit"] {
 	background-color: #4f96f2;
 	color: white;
@@ -153,4 +161,16 @@ button#memberDropBtn {
     padding: 10px;
     margin: 10px;
     border-radius: 6px;
+}
+
+a.pwChage {
+    width: 380px;
+    margin: 12px;
+    padding: 10px;
+    color: #ffffff;
+    font-family: 'Jua', sans-serif;
+    font-size: 15px;
+    background-color: #b3b3b3;
+    border-radius: 6px;
+    font-size: 15px;
 }
