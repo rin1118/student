@@ -58,5 +58,11 @@ public class LoginDAOImpl implements LoginDAO{
 		sqlSession.update("homeMapper.pwUpdate", vo);
 	}
 
+	@Override
+	public String getId(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("homeMapper.getId", email);
+	}
+
 
 }

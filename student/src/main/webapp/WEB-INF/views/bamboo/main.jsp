@@ -37,7 +37,9 @@
 							</li>
 							<li class="writeInfo">
 								<span>🍀 ${item.writer }</span>
-								<span>⏰ ${item.regDate }</span>
+								<span>
+									<fmt:formatDate value="${item.regdate}" pattern="yyyy.MM.dd" />
+								</span>
 							</li>
 							<li class="messageBox">
 								<p>${item.description }</p>
@@ -68,7 +70,9 @@
 						</li>
 						<li class="writeInfo">
 							<span>🍀 ${item.writer }</span>
-							<span>⏰ ${item.regDate }</span>
+							<span>
+								⏰ <fmt:formatDate value="${item.regDate}" pattern="yyyy.MM.dd" />
+							</span>
 						</li>
 						<li class="messageBox">
 							<p>${item.description }</p>

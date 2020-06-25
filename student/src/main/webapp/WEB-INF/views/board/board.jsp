@@ -31,7 +31,9 @@
 						<a href="/board/detail?id=${item.b_no}">${item.title}</a>
 					</td>
 					<td>${item.writer}</td>
-					<td>${item.regdate}</td>
+					<td>
+						<fmt:formatDate value="${item.regdate}" pattern="yyyy.MM.dd" />
+					</td>
 				</tr>
 		</c:forEach>
 	</table>

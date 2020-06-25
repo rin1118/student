@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.test.service.EmailService;
 import com.test.service.LoginService;
 import com.test.vo.DepartmentVO;
+import com.test.vo.EmailVO;
 import com.test.vo.LoginVO;
 
 @Controller
@@ -28,6 +30,9 @@ public class HomeController {
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	EmailService email;
 	
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
@@ -129,8 +134,6 @@ public class HomeController {
 		return result;
 	}
 	
-	
-	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(Model model, LoginVO vo, HttpServletRequest req, RedirectAttributes rttr) {
 		
@@ -225,4 +228,55 @@ public class HomeController {
 		} 
 			return pwMatch;
 	}
+	
+	@RequestMapping(value = "/find", method = RequestMethod.GET)
+	public String findId(Model model, String value) {
+
+		logger.info("아이디 찾기 뷰 페이지");
+		
+		model.addAttribute("value", value);
+		
+		System.out.println(value);
+		
+		return "/findId";
+	}
+	
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
+	public String sendEmail(Model model, EmailVO vo, RedirectAttributes rttr) {
+		
+		System.out.println(vo.getReceiveMail());
+		
+		logger.info("아이디 찾기 메일 보내기");
+		
+		try {
+			int count = service.emailChk(vo.getReceiveMail());
+			
+			if(count == 1) {
+				String getId = service.getId(vo.getReceiveMail());			
+				String senderName = "아이디 알리미";
+				String senderMail = "0302mong@gmail.com";
+				String subject = "요청하신 아이디를 보냈습니다.";
+				String message = "요청하신 아이디는 " + getId + " 입니다";
+				
+				vo.setSenderName(senderName);
+				vo.setSenderMail(senderMail);
+				vo.setSubject(subject);
+				vo.setMessage(message);	
+			
+				String result = email.sendMail(vo);			
+				System.out.println(result);
+			}
+			else if(count == 0){
+				rttr.addFlashAttribute("msg", false);
+				rttr.addAttribute("value", "id");   
+				return "redirect:/find";
+			}
+		} catch(Exception e) {
+			System.out.println(e);
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/";
+		}
+		return "redirect:/";
+	}
+	
 }

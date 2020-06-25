@@ -34,7 +34,7 @@
 		select m_no, name, email, d_name, id, password, role from member where id = #{id}
 	</select>
 	
-	<!-- 비밀번호 변경 -->
+	<!-- 해당 유저의 비밀번호 가져오기 -->
 	<select id="getPw" resultType="String">
 		select password from member where m_no = #{m_no}
 	</select>
@@ -45,4 +45,10 @@
 		set password = #{password}
   		where m_no = #{m_no}
 	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="getId" resultType="String">
+		select id from member where email = #{receiveMail}
+	</select>
+	
 </mapper>

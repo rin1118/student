@@ -31,7 +31,7 @@
 				<li><a href="/board/main">공지사항</a></li>
 				<li><a href="/lecture/evaluate/main">강의 평가</a></li>
 				<c:if test="${not empty member }">
-					<li><a href="#">강의 자료실</a>				
+					<li><a href="/lecture/data/main">강의 자료실</a>				
 				</c:if>
 				<c:if test="${not empty member && member.getRole() == 'student'}">
 					<li><a href="/lecture/signUp">수강 신청</a></li>

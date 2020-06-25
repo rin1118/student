@@ -35,7 +35,9 @@
 				<c:forEach items="${search }" var="item">
 					<form class="evaluateItem">
 						<input type="hidden" name="e_no" value="${item.e_no}">
-						<span>⏰ ${item.regDate}</span>
+						<span>
+							⏰ <fmt:formatDate value="${item.regDate}" pattern="yyyy.MM.dd" />
+						</span>
 						<span>
 							<span>💡 강의분류</span>
 							<input type="text" name="category" id="category" value="${item.category}" readOnly>					
@@ -64,7 +66,9 @@
 			<c:forEach items="${list }" var="item">
 				<form class="evaluateItem">
 					<input type="hidden" name="e_no" value="${item.e_no}">
-					<span>⏰ ${item.regDate}</span>
+					<span>
+						⏰ <fmt:formatDate value="${item.regDate}" pattern="yyyy.MM.dd" />
+					</span>
 					<span>
 						<span>💡 강의분류</span>
 						<input type="text" name="category" id="category" value="${item.category}" readOnly>					

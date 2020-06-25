@@ -60,8 +60,9 @@ public class LoginServiceImpl implements LoginService{
 		dao.changePw(vo);
 	}
 
-	
-
-	
-
+	@Override
+	public String getId(String email) {
+		// TODO Auto-generated method stub
+		return dao.getId(email);
+	}
 }

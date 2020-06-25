@@ -24,8 +24,8 @@
 			<input type="submit" value="로그인">
 		</form>
 		<span>
-			<a href="#">🔒 아이디</a>
-			<a href="#">비밀번호 찾기</a>		
+			<a href="/find?value=id">🔒 아이디</a>
+			<a href="/find?value=pw">비밀번호 찾기</a>		
 		</span>
 	</section>
 	<footer class="footer">
