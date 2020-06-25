@@ -15,6 +15,12 @@
 	<div class="pageTitle">📢 공지사항</div>
 	<div class="registerForm">
 		<form id="boardForm">
+			<c:if test="${member.getRole() == 'admin' }">
+				<span class="submitContainer">
+					<input type="submit" value="수정" id="boardUpdateBtn" class="registerSubmit">
+					<input type="submit" value="삭제" id="boardDeleteBtn" class="registerSubmit">			
+				</span>			
+			</c:if>
 			<span>제목</span> 
 			<input type="text" name="title" value="${title}" class="writeInfo" readOnly>
 			<span>작성자</span> 
@@ -22,12 +28,7 @@
 			<span>내용</span> 
 			<textarea name="content" readOnly >${content }</textarea>
 			<input type="hidden" name="id" value="${id}">
-			<c:if test="${member.getRole() == 'admin' }">
-				<span class="submitContainer">
-					<input type="submit" value="수정" id="boardUpdateBtn" class="registerSubmit">
-					<input type="submit" value="삭제" id="boardDeleteBtn" class="registerSubmit">			
-				</span>			
-			</c:if>
+			<button class="backBtn" id="backBtn">목록</button>
 		</form>
 	</div>
 </section>

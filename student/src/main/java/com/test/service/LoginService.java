@@ -12,6 +12,8 @@ public interface LoginService {
 	//회원가입
 	public void join(LoginVO vo);
 	public void memberDrop(int m_no);
+	public int idChk(String id);
+	public int emailChk(String email);
 	
 	//로그인
 	public LoginVO login(LoginVO vo);

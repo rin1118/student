@@ -13,6 +13,7 @@
 		<div class="pageTitle">✍  강의 수정</div>
 		<div class="registerForm">
 			<form id="lectureForm">
+					<input type="submit" id="deleteBtn" class="button del" value="삭제">	
 					<select name="category">
 					<option value="전공">전공
 					<option value="전선">전선
@@ -25,12 +26,11 @@
 				강의 내용 
 				<textarea name="description">${description}</textarea>
 				<input type="hidden" name="l_no" value="${id }">
-				<span>
-					<input type="submit" id="updateBtn" class="submitBtn update" value="확인">
-					<input type="submit" id="deleteBtn" class="submitBtn delete" value="삭제">				
+				<span class="btnContainer">
+					<button id="backBtn" class="button cancel">취소</button> 
+					<input type="submit" id="updateBtn" class="button submit" value="확인">						
 				</span>
 			</form>
-			<a href="#">취소</a>
 		</div>	
 	</section>
 </body>

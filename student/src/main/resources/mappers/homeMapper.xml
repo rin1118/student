@@ -14,6 +14,16 @@
 		insert into member (m_no, name, email, d_name, id, password, role) values (member_seq.nextval, #{name}, #{email}, #{d_name}, #{id}, #{password}, #{role})
 	</insert>
 	
+	<!-- 아이디 중복 확인 -->
+	<select id="idChk" resultType="int">
+		select count(*) from member where id = #{id}
+	</select>
+	
+	<!-- 이메일 중복 확인 -->
+	<select id="emailChk" resultType="int">
+		select count(*) from member where email = #{email}
+	</select>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="memberDrop">
 		delete from member where m_no = #{m_no}
@@ -21,7 +31,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="com.test.vo.LoginVO">
-		select m_no, name, email, d_name, id, password, role from member where id = #{id} and password = #{password}
+		select m_no, name, email, d_name, id, password, role from member where id = #{id}
 	</select>
 	
 	<!-- 비밀번호 변경 -->
@@ -29,6 +39,7 @@
 		select password from member where m_no = #{m_no}
 	</select>
 	
+	<!-- 비밀번호 변경 -->
 	<update id="pwUpdate">
 		update member 
 		set password = #{password}

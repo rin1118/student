@@ -1,8 +1,14 @@
 const boardForm = document.getElementById("boardForm"); 
 const updateBtn = document.getElementById("boardUpdateBtn");
 const deleteBtn = document.getElementById("boardDeleteBtn");
+const backBtn = document.getElementById("backBtn");
 
-function handleSubmit(e) {
+const handleBack = (e) => {
+	e.preventDefault()
+	history.back();
+}
+
+const handleSubmit = (e) => {
 	e.preventDefault();
 	const target = e.target.value;
 	const id= new URLSearchParams(location.search).get("id");
@@ -19,5 +25,12 @@ function handleSubmit(e) {
 	}
 }
 
-updateBtn.addEventListener("click", handleSubmit);
-deleteBtn.addEventListener("click", handleSubmit);
+if(updateBtn){
+	updateBtn.addEventListener("click", handleSubmit);	
+}
+if(deleteBtn){
+	deleteBtn.addEventListener("click", handleSubmit);	
+}
+if(backBtn){
+	backBtn.addEventListener("click", handleBack);
+}

@@ -1,5 +1,9 @@
 @font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+textarea {
+	resize: none;
+}
+
 .main {
 	position: relative;
 }
@@ -9,6 +13,27 @@
     font-weight: 600;
     color: #190909cc;
     margin: 50px;
+}
+
+.button {
+	background-color: #4f96f2;
+    color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 13px;
+    padding: 5px 0px;
+    border-radius: 10px;
+}
+
+.button.cancel{
+    background-color: #b3b3b3cf;
+}
+
+.button.del {
+	position: absolute;
+	top: 0px;
+    right: 0;
 }
 
 .listItem {
@@ -64,18 +89,20 @@
 }
 
 .registerForm form {
+	position: relative;
 	display: flex;
     flex-direction: column;
     width: 800px;
     justify-content: center;
     margin: 0 auto;
+    padding-top: 20px;
     height: 509px;
 }
 
 .registerForm form input,
 .registerForm form textarea,
 .registerForm form select {
-	font-family: 'JSDongkang-Regular';
+	font-family: none;
 }
 
 .registerSubmit {

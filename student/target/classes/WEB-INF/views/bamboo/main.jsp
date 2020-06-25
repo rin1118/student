@@ -64,7 +64,7 @@
 				<div class="message">
 					<ul class="messageItem">
 						<li class="itemTitle">
-							<span>${item.title}</span>
+							<a href="#" class="messageUpdate" data-b_no="${item.b_no}" data-writer="${item.writer}">${item.title}</a>
 						</li>
 						<li class="writeInfo">
 							<span>🍀 ${item.writer }</span>
@@ -91,4 +91,5 @@
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/resources/js/bamboo.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </html>

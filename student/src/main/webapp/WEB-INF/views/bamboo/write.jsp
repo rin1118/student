@@ -16,13 +16,16 @@
 		<div class="view">
 			<div class="writeContainer">
 				<form class="writeForm" action="/bamboo/write" method="POST">
-					<input type="text" name="title" class="itemTitle" placeholder="제목">
+					<input type="text" name="title" class="itemTitle" placeholder="제목" required>
 					<div class="writerInfo">
-						<input type="text" name="writer" placeholder="작성자">
-						<input class="password" type="password" name="password" placeholder="비밀번호">
+						<input type="text" name="writer" placeholder="작성자" required>
+						<input class="password" type="password" name="password" placeholder="비밀번호" required>
 					</div>
-					<textarea class="messageBox" name="description" placeholder="내용"></textarea>
-					<input type="submit" value="확인">
+					<textarea class="messageBox" name="description" placeholder="내용" required></textarea>
+					<span class="btnContainer">
+						<button class="button back" id="backBtn">목록</button>					
+						<input class="button submit" type="submit" value="확인">
+					</span>
 				</form>
 			</div>
 		</div>

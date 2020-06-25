@@ -40,4 +40,20 @@ public class BambooServiceImpl implements BambooService {
 		return dao.search(vo);
 	}
 
+	@Override
+	public BambooVO writeMessage(BambooVO vo) {
+		// TODO Auto-generated method stub
+		return dao.writeMessage(vo);
+	}
+
+	@Override
+	public void messageUpdate(BambooVO vo) {
+		dao.messageUpdate(vo);
+	}
+
+	@Override
+	public void messageDel(int b_no) {
+		dao.messageDel(b_no);
+	}
+
 }

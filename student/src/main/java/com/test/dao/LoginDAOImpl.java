@@ -35,6 +35,18 @@ public class LoginDAOImpl implements LoginDAO{
 	public void memberDrop(int m_no) {
 		sqlSession.delete("homeMapper.memberDrop", m_no);
 	}
+	
+	@Override
+	public int idChk(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("homeMapper.idChk", id);
+	}
+	
+	@Override
+	public int emailChk(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("homeMapper.emailChk", email);
+	}
 
 	@Override
 	public String getPw(int m_no) {
@@ -45,5 +57,6 @@ public class LoginDAOImpl implements LoginDAO{
 	public void changePw(LoginVO vo) {
 		sqlSession.update("homeMapper.pwUpdate", vo);
 	}
+
 
 }

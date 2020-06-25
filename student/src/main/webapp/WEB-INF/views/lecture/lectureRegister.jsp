@@ -22,9 +22,13 @@
 				<input class="lectureInfo" type="text" name="professor" value="${member.getName() }" placeholder="교수명" required>
 				<textarea name="description" placeholder="강의 설명"></textarea>
 				<input type="hidden" name="p_no" value=${member.getM_no() }>
-				<input type="submit" value="등록" class="registerSubmit">
+				<span class="btnContainer">
+					<button id="backBtn" class="button cancel">취소</button> 
+					<input type="submit" value="등록" class="button submit">
+				</span>
 			</form>
 		</div>
 	</section>
 </body>
+<script src="/resources/js/lecture.js"></script>
 </html>

@@ -1,7 +1,12 @@
 const submit = document.querySelectorAll("#submitBtn");
 const searchForm = document.querySelector(".searchForm");
 const lectureBookList = document.getElementById("lectureBookList");
+const backBtn = document.getElementById("backBtn");
 
+const handleBack = (e) => {
+	e.preventDefault()
+	history.back();
+}
 
 const submitBlock = () => {
 
@@ -73,4 +78,8 @@ if(searchForm){
 
 if(lectureBookList){
 	submitBlock();
+}
+
+if(backBtn){
+	backBtn.addEventListener("click", handleBack);
 }

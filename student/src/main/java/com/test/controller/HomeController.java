@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public class HomeController {
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -49,20 +53,34 @@ public class HomeController {
 		
 		logger.info("로그인 처리");
 		
-		String url;
-		HttpSession session = req.getSession();		
-		LoginVO login = service.login(vo);
+		String url="redirect:/";
 		
+		HttpSession session = req.getSession();	
 		session.setMaxInactiveInterval(60*60);
 		
-		if(login == null) {
+		
+		try {	
+			LoginVO login = service.login(vo);
+			
+			System.out.println(login.toString());
+			
+			boolean pwMatch = pwEncoder.matches(vo.getPassword(), login.getPassword());
+			
+			if(login != null && pwMatch == true){
+				session.setAttribute("member", login);
+				url = "redirect:/";
+			} else {
+				url = "redirect:/login";
+				session.setAttribute("member", null);
+				rttr.addFlashAttribute("msg", false);
+			}
+			
+		} catch(Exception e) {
 			url = "redirect:/login";
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
-		} else {
-			url = "redirect:/";
-			session.setAttribute("member", login);
 		}
+		
 		return url;
 	}
 	
@@ -89,13 +107,40 @@ public class HomeController {
 		return "join";
 	}
 	
+	@RequestMapping(value = "/idChk", method = RequestMethod.GET)
+	@ResponseBody
+	public int idChk(String id) {
+		
+		logger.info("아이디 중복 확인");
+		
+		int result = service.idChk(id);
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/emailChk", method = RequestMethod.GET)
+	@ResponseBody
+	public int emailChk(String email) {
+		
+		logger.info("이메일 중복 확인");
+		
+		int result = service.emailChk(email);
+		
+		return result;
+	}
+	
+	
+	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(Model model, LoginVO vo, HttpServletRequest req, RedirectAttributes rttr) {
 		
 		logger.info("회원가입 처리");
+		
 		System.out.println(vo.toString());
 		
 		try {
+			String pw = pwEncoder.encode(vo.getPassword());
+			vo.setPassword(pw);
 			service.join(vo);
 			this.login(model, vo, req, rttr);
 		} catch(Exception e) {
@@ -139,7 +184,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/changePw", method = RequestMethod.POST)
 	@ResponseBody
-	public void changePw(String password, HttpServletRequest req) {
+	public void changePw(String changePw, HttpServletRequest req) {
 		
 		logger.info("비밀번호 변경 처리");
 		LoginVO vo = new LoginVO();
@@ -148,31 +193,36 @@ public class HomeController {
 			HttpSession session = req.getSession();		
 			LoginVO member = (LoginVO) session.getAttribute("member");
 			
+			String pw = pwEncoder.encode(changePw);
+		
 			vo.setM_no(member.getM_no());
-			vo.setPassword(password);
+			vo.setPassword(pw);
 			service.changePw(vo);
 			
 		} catch(NullPointerException e) {
-			System.out.println(e);
+			System.out.println("비밀번호 변경 처리::::::" + e);
 		} 
 	}
 	
 	@RequestMapping(value = "/getPw", method = RequestMethod.GET)
 	@ResponseBody
-	public String getPw(HttpServletRequest req) {
+	public boolean getPw(HttpServletRequest req,  String pw) {
 		
 		logger.info("DB에서 비밀번호 select");
 		
-		String pw="";
+		String getPw="";
+		boolean pwMatch = false;
 		
 		try {
 			HttpSession session = req.getSession();		
 			LoginVO member = (LoginVO) session.getAttribute("member");
-			pw = service.getPw(member.getM_no());
+			
+			getPw = service.getPw(member.getM_no());
+			pwMatch = pwEncoder.matches(pw, getPw);
+			
 		} catch(NullPointerException e) {
-			System.out.println(e);
+			System.out.println("비밀번호 select:::::" + e);
 		} 
-		
-		return pw;
+			return pwMatch;
 	}
 }

@@ -17,9 +17,7 @@
 			<input type="text" name="id" placeholder="아이디" maxlength="" value="${member.getId() }" readonly>
 			<input type="text" name="name" placeholder="이름"  value="${member.getName() }" readonly>
 			<input type="text" name="email" placeholder="이메일"  value="${member.getEmail() }"readonly>
-			<select class="department">
-					<option value="${member.getD_name() }">${member.getD_name() }
-			</select>
+			<input type="text" value="${member.getD_name() }" readonly>
 			<input type="hidden" id="d_name" name="d_name">
 			<input type="submit" id="mypageSubBtn" value="확인">
 			<a href="/changePw" class="pwChage">🔒 비밀번호 변경하기</a>

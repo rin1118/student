@@ -1,11 +1,17 @@
 @font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+textarea {
+	resize: none;
+}
+
 .pageTitle{
 	font-size: 26px;
     font-weight: 600;
     color: #190909cc;
     margin: 50px;	
 }
+
+
 
 .listItem {
     background-color: white;
@@ -31,6 +37,10 @@
     color: white;
     width: 42px;
     font-size: 13px;
+}
+
+#submitBtn:disabled {
+  background-color: #dad9d9b0;
 }
 
 #deleteBtn {

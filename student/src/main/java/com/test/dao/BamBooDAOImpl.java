@@ -42,4 +42,20 @@ public class BamBooDAOImpl implements BambooDAO {
 		return sqlSession.selectList("bambooMapper.search", vo);
 	}
 
+	@Override
+	public BambooVO writeMessage(BambooVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("bambooMapper.writeMessage", vo);
+	}
+
+	@Override
+	public void messageUpdate(BambooVO vo) {
+		sqlSession.selectOne("bambooMapper.messageUpdate", vo);
+	}
+
+	@Override
+	public void messageDel(int b_no) {
+		sqlSession.delete("bambooMapper.messageDel", b_no);
+	}
+
 }

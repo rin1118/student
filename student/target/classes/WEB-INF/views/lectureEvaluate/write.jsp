@@ -37,12 +37,13 @@
 							<td>
 								<input type="text" name="professor"  value="${item.professor}" readOnly> 
 							</td>
-							<td><input type="submit" value="평가 작성"></td>
+							<td><input type="submit" class="submitBtn" value="작성"></td>
 						</tr>
 						<input type="hidden" id="l_no" name="l_no" value="${item.l_no }">
 					</form>
 			</c:forEach>
 		</table>
+		<button id="backBtn" class="button back">목록</button>
 	</section>
 </body>
 <script src="/resources/js/evaluate.js"></script>

@@ -47,6 +47,7 @@ button {
 
 textarea {
 	font-family: 'SDongkang-Regular';
+ 	resize: none;
 }
 
 .header {

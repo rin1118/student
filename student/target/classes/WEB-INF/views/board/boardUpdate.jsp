@@ -18,7 +18,7 @@
 			제목 : <input type="text" name="title" value="${title}" class="writeInfo" >
 			작성자 <input type="text" name="writer" value="${writer}" class="writeInfo" readOnly>
 			내용 : <textarea name="content">${content}</textarea>
-			<input type="submit" value="확인" class="registerSubmit">
+			<input type="submit" value="확인" class="backBtn submit">
 		</form>
 	</div>
 </section>

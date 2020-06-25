@@ -7,11 +7,11 @@
 	<select id="getList" resultType="com.test.vo.BambooVO">
    		select * from bamboo order by b_no desc
    </select>
-   
-   <select id="selectOne" resultType="com.test.vo.BambooVO">
-   		select * from board where b_no = #{b_no}
-   </select>
 
+	<select id="search" resultType="com.test.vo.BambooVO">
+   		select * from bamboo where ${category} like '%' ||  #{searchValue} || '%'
+   </select>
+   
    <insert id="insert">
    	insert into bamboo (b_no, ip, writer, password, title, description) values (bamboo_seq.nextval, #{ip}, #{writer}, #{password}, #{title}, #{description})
    </insert>
@@ -23,20 +23,20 @@
    <update id="notFavUpdate">
       	update bamboo set notfav = #{notFav} where b_no = #{b_no}
    </update>
-    
-   <update id="update" parameterType="com.test.vo.BambooVO">
-		UPDATE board
-		   SET TITLE = #{title},
-		   	   CONTENT = #{content}
-		 WHERE b_no = #{b_no} 
-	</update>
-	 
-   <delete id="delete">
-   		delete from board where b_no = #{b_no}
+
+   <select id="writeMessage" resultType="com.test.vo.BambooVO">
+   		select * from bamboo where writer = #{writer} and password = ${password} and b_no = ${b_no}
+   </select>
+   
+   <update id="messageUpdate">
+	   	UPDATE bamboo
+		  SET title = #{title}, writer = #{writer}, description = #{description}, password = ${password}
+		  where b_no = ${b_no}
+   </update>
+   
+   <delete id="messageDel" parameterType="int">
+   		delete from bamboo where b_no = #{b_no}
    </delete>
    
-   <select id="search" resultType="com.test.vo.BambooVO">
-   		select * from bamboo where ${category} like '%' ||  #{searchValue} || '%'
-   </select>
 
 </mapper>

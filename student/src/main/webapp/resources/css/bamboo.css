@@ -1,5 +1,10 @@
 @font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+textarea {
+	resize: none;
+}
+
+
 .pageTitle{
 	font-size: 26px;
     font-weight: 600;
@@ -75,13 +80,24 @@ form.searchForm {
 .messageBox {
 	height: 150px;
     font-size: 14px;
-    padding: 10px 21px;
+    padding: 15px;
     text-align: left;
 }
 
 .messageItem {
+	position: relative;
     height: 100%;
      font-family: 'JSDongkang-Regular';
+}
+
+button.messageUpdate {
+	position: absolute;
+    border: none;
+    border-radius: 7px;
+    padding: 2px 9px;
+    font-size: 12px;
+    top: 63px;
+    right: 18px;
 }
 
 .itemTitle {
@@ -129,6 +145,14 @@ li.messageBox {
     font-size: 13px;
 }
 
+.writerInfo input:nth-child(1) {
+    margin-right: 10px;
+}
+
+.writeForm input[type="password"]{
+	padding: 10px;
+}
+
 .writeForm input:not(.password) {
 	padding: 10px;
 	font-family: 'JSDongkang-Regular';
@@ -138,12 +162,37 @@ input[type="password"]::placeholder {
 	font-family: 'JSDongkang-Regular';
 }
 
+
+span.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.btnContainer button,
+.btnContainer input{
+	margin: 5px;
+}
+
+.button {
+    background-color: #b3b3b3cf;
+    color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 13px;
+    padding: 5px 0px;
+    border-radius: 10px;
+}
+
 .writeForm input[type="submit"] {
     background-color: #4f96f2;
     color: white;
-    width: 75px;
-    height: 35px;
-    margin: 0 auto;
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 13px;
+    padding: 5px 0px;
+    border-radius: 10px;
 }
 
 .writeForm textarea {
@@ -161,4 +210,8 @@ input[type="password"]::placeholder {
 .favBtn:focus {
 	outline: none;
 	border: none;
+}
+
+input#messageDel {
+    background-color: #ff1c1cba;
 }

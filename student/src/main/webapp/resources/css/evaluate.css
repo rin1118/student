@@ -10,6 +10,10 @@
 	position: relative;
 }
 
+textarea {
+	resize: none;
+}
+
 input[type="submit"] {
 	cursor: pointer;
 }
@@ -38,9 +42,48 @@ input[type="submit"] {
     
 }
 
+input.submitBtn {
+    padding: 4px 8px;
+    background-color: #ff9a0edb;
+    color: white;
+    width: 42px;
+    font-size: 13px;
+}
+
+.btnContainer {
+	margin: 0 auto;
+}
+
+.button {
+	background-color: #4f96f2;
+    color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 13px;
+    padding: 5px 0px;
+    border-radius: 10px;
+}
+
+.button.back {
+	margin: 25px auto;
+}
+
+.button.cancel{
+	padding: 4px 0px;
+    background-color: #b3b3b3cf;
+    color: white;
+    font-weight: 600;
+    font-size: 11px;
+    width: 42px;
+}
+
+.itemTitle {
+	margin-right: 5px;
+}
+
 .evaluateItem span {
 	font-size: 13px;
-    margin-right: 7px;
 }
 
 .evaluateItem input {
@@ -110,10 +153,6 @@ input#submitBtn {
     width: 42px;
     font-family: 'NEXON Lv1 Gothic OTF Light'';
     
-}
-
-input#submitBtn:last-child {
-    background-color: #ff1c1cba;
 }
 
 .writeBtn {

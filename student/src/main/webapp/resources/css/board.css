@@ -1,5 +1,9 @@
 @font-face { font-family: 'JSDongkang-Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+textarea {
+	resize: none;
+}
+
 .main {
 	position: relative;
 	height: 1000px;
@@ -52,14 +56,15 @@
 .registerForm {
     width: 1024px;
     background-color: white;
-    margin: 0 auto;
-    height: 600px;
+    margin: 86px auto;
+    height: 550px;
     display: flex;
     flex-direction: column;
-    padding: 55px;
+    padding: 35px;
     justify-content: space-around;
-    border-radius: 12px;
-    box-shadow: 0px 12px 22px 2px #e3e3e3a6;
+    border-radius: 30px;
+    box-shadow: 0px 6px 15px 5px #e3e3e394;
+  
 }
 
 .registerForm form {
@@ -69,6 +74,17 @@
     justify-content: center;
     margin: 0 auto;
     height: 509px;
+    font-family: 'JSDongkang-Regular';
+}
+
+.registerForm form input {
+	text-align: center;
+}
+
+.registerForm form input,
+.registerForm form textarea {
+	font-family: 'JSDongkang-Regular';
+	border: 1px solid #d8d7d7;
 }
 
 .writeInfo {
@@ -89,16 +105,35 @@
     padding: 20px;
 }
 
+span.submitContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .registerSubmit {
-	background-color: #4f96f2;
+	background-color: #ff9a0edb;
     color: white;
-    width: 70px;
+    width: 53px;
     text-align: center;
     border: none;
-    font-size: 14px;
+    font-size: 12px;
+    padding: 5px 0px;
+    border-radius: 10px;
+    margin: 0px 2px;
+}
+
+.backBtn {
+	background-color: #4f96f2;
+    color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 13px;
     margin: 0 auto;
     padding: 5px 0px;
+    border-radius: 10px;
 }
+
 
 #boardForm span{
 	margin: 7px;

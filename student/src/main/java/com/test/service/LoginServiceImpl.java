@@ -36,6 +36,18 @@ public class LoginServiceImpl implements LoginService{
 	public void memberDrop(int m_no) {
 		dao.memberDrop(m_no);
 	}
+	
+	@Override
+	public int idChk(String id) {
+		// TODO Auto-generated method stub
+		return dao.idChk(id);
+	}
+	
+	@Override
+	public int emailChk(String email) {
+		// TODO Auto-generated method stub
+		return dao.emailChk(email);
+	}
 
 	@Override
 	public String getPw(int m_no) {
@@ -47,5 +59,9 @@ public class LoginServiceImpl implements LoginService{
 	public void changePw(LoginVO vo) {
 		dao.changePw(vo);
 	}
+
+	
+
+	
 
 }

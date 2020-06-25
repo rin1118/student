@@ -16,20 +16,24 @@
 			<form id="form" method="post" action="/lecture/evaluate/write"  class="evaluateItem">
 				<input type="hidden" name="l_no" value="${l_no}">
 				<span>
-					<span>💡 강의분류</span>
+					<span class="itemTitle">💡 강의분류</span>
 					<input type="text" name="category" value="${category }" readOnly>			
 				</span>
 				<span>
-					<span>💡 강의명</span>
+					<span class="itemTitle">💡 강의명</span>
 					 <input type="text" name="title" value="${title }" readOnly>
 				</span>
 				<span>
-					<span>💡 교수명</span>
+					<span class="itemTitle">💡 교수명</span>
 					<input type="text" name="professor" value="${professor}" readOnly>
 				</span>
 				<textarea name="description" placeholder="내용을 작성해주세요" required></textarea>
-				<input type="submit" id="submitBtn" value="확인"> 		
+				<span class="btnContainer">
+					<button id="backBtn" class="button cancel">취소</button>
+					<input type="submit" class="button submit" id="submitBtn" value="확인"> 						
+				</span>
 			</form>	
 	</section>
 </body>
+<script src="/resources/js/evaluate.js"></script>
 </html>

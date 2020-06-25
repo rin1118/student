@@ -97,4 +97,59 @@ public class BambooController {
 		return "/bamboo/main";
 	}
 	
+	@RequestMapping(value = "/bamboo/update", method = RequestMethod.GET)
+	public String updateView(Model model) throws Exception {
+		logger.info("대나무숲 업데이트 뷰 페이지");
+		
+		return "/bamboo/update";
+	}
+	
+	@RequestMapping(value = "/bamboo/writeMessage", method = RequestMethod.GET)
+	@ResponseBody
+	public BambooVO writeMessage(Model model, String writer, int password, int b_no) throws Exception {
+		logger.info("대나무숲 작성자명, 비밀번호를 받아 해당 작성자 글 select");
+		
+		System.out.println(writer);
+		System.out.println(password);
+		System.out.println(b_no);
+		
+		BambooVO vo = new BambooVO();
+	
+		vo.setWriter(writer);
+		vo.setPassword(password);
+		vo.setB_no(b_no);
+		
+		BambooVO result = null;
+		
+		try {
+			result = service.writeMessage(vo);			
+			model.addAttribute("result", result);
+			System.out.println(result.toString());
+		} catch(NullPointerException e) {
+			System.out.println("비밀번호가 틀렸습니다");
+		}
+	
+		return result;
+	}
+	
+	@RequestMapping(value = "/bamboo/update", method = RequestMethod.POST)
+	public String update(Model model, BambooVO vo) throws Exception {
+		logger.info("대나무숲 업데이트 처리");
+		
+		System.out.println(vo.toString());
+		
+		service.messageUpdate(vo);
+		
+		return "redirect:/bamboo/main";
+	}
+	
+	@RequestMapping(value = "/bamboo/delete", method = RequestMethod.POST)
+	public String delete(Model model, int b_no) throws Exception {
+		logger.info("대나무숲 삭제 처리");
+		
+		service.messageDel(b_no);
+		
+		return "redirect:/bamboo/main";
+	}
+
 }
