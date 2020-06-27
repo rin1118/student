@@ -51,4 +51,9 @@
 		select id from member where email = #{receiveMail}
 	</select>
 	
+	<!--  임시 비밀번호 발급 -->
+	<select id="getM_no" resultType="int">
+		select m_no from member where email = #{email}
+	</select>
+	
 </mapper>

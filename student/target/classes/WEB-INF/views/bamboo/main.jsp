@@ -33,12 +33,12 @@
 					<div class="message">
 						<ul class="messageItem">
 							<li class="itemTitle">
-								<span>${item.title}</span>
+								<a href="#" class="messageUpdate" data-b_no="${item.b_no}" data-writer="${item.writer}">${item.title}</a>
 							</li>
 							<li class="writeInfo">
 								<span>🍀 ${item.writer }</span>
 								<span>
-									<fmt:formatDate value="${item.regdate}" pattern="yyyy.MM.dd" />
+									⏰ <fmt:formatDate value="${item.regDate}" pattern="yyyy.MM.dd" />
 								</span>
 							</li>
 							<li class="messageBox">

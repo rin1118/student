@@ -18,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.test.service.EmailService;
 import com.test.service.LoginService;
+import com.test.util.Util;
+import com.test.util.UtilImpl;
 import com.test.vo.DepartmentVO;
 import com.test.vo.EmailVO;
 import com.test.vo.LoginVO;
@@ -242,7 +244,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/findId", method = RequestMethod.POST)
-	public String sendEmail(Model model, EmailVO vo, RedirectAttributes rttr) {
+	public String findIdEmail(Model model, EmailVO vo, RedirectAttributes rttr) {
 		
 		System.out.println(vo.getReceiveMail());
 		
@@ -269,6 +271,68 @@ public class HomeController {
 			else if(count == 0){
 				rttr.addFlashAttribute("msg", false);
 				rttr.addAttribute("value", "id");   
+				return "redirect:/find";
+			}
+		} catch(Exception e) {
+			System.out.println(e);
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/";
+		}
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	public String findPwEmail(Model model, EmailVO vo, RedirectAttributes rttr) {
+		
+		System.out.println(vo.getReceiveMail());
+		
+		logger.info("비밀번호 찾기 메일 보내기");
+		
+		try {
+			//입력한 이메일이 db에 등록된 이메일인지 확인
+			int count = service.emailChk(vo.getReceiveMail()); 
+			
+			if(count == 1) {
+				//db에 이메일이 있는 경우
+				
+				//입력받은 이메일로 멤버 번호를 불러옴
+				int m_no = service.getM_no(vo.getReceiveMail());
+				LoginVO login = new LoginVO();
+				
+				//랜덤함수로 임시 비밀번호 생성
+				int randomNum = 6;			
+				Util util = new UtilImpl();			
+				String password = util.randomPw(randomNum);
+				
+				//임시 비밀번호 암호화
+				String encryptPw = pwEncoder.encode(password);
+				
+				//vo에 받아온 멤머 번호와 임시 비밀번호를 세팅해줌
+				login.setM_no(m_no);
+				login.setPassword(encryptPw);
+							
+				//비밀번호 변경
+				service.changePw(login);
+				
+				//사용자에게 임시 비밀번호 메일 보내기
+				String senderName = "비밀번호 알리미";
+				String senderMail = "0302mong@gmail.com";
+				String subject = "요청하신 임시 비밀번호를 보냈습니다.";
+				String message = "요청하신 임시 비밀번호는 " + password + " 입니다.\n"
+						+ "로그인 후 비밀번호를 변경해 주세요.";
+				
+				vo.setSenderName(senderName);
+				vo.setSenderMail(senderMail);
+				vo.setSubject(subject);
+				vo.setMessage(message);	
+
+				String result = email.sendMail(vo);			
+				System.out.println(result);
+			}
+			else if(count == 0){
+				//입력한 이메일이 db에 등록 되어있지 않는 경우
+				rttr.addFlashAttribute("msg", false);
+				rttr.addAttribute("value", "pw");   
 				return "redirect:/find";
 			}
 		} catch(Exception e) {

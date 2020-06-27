@@ -64,5 +64,11 @@ public class LoginDAOImpl implements LoginDAO{
 		return sqlSession.selectOne("homeMapper.getId", email);
 	}
 
+	@Override
+	public int getM_no(String email) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("homeMapper.getM_no", email);
+	}
+
 
 }

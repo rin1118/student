@@ -37,6 +37,10 @@ form.searchForm {
     margin-bottom: 75px;
 }
 
+a.messageUpdate {
+    color: black;
+}
+
 .searchContainer select {
 	padding: 10px;
     border: 4px solid #41b33d;

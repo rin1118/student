@@ -4,6 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
 	
+	<!-- 게시글 총 갯수 -->
+	<select id="listCount" resultType="int">
+		select count(b_no) 
+		from board
+		where b_no > 0 
+	</select>
+	
+	<select id="listPage" resultType="com.test.vo.BoardVO"  parameterType="com.test.vo.Criteria">
+		SELECT  B_NO, TITLE, CONTENT, WRITER, REGDATE
+		FROM ( 
+	        SELECT B_NO, 
+	               TITLE, 
+	               CONTENT, 
+	               WRITER, 
+	               REGDATE, 
+	               ROW_NUMBER() OVER(ORDER BY B_NO DESC) AS RNUM
+	         FROM BOARD 
+       		)
+		BOARD
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY b_no DESC
+	</select>
+	
 	<select id="getList" resultType="com.test.vo.BoardVO">
    		select * from board order by b_no desc
    </select>

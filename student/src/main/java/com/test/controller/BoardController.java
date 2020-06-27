@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.service.BoardService;
 import com.test.vo.BoardVO;
+import com.test.vo.Criteria;
+import com.test.vo.PageMaker;
 
 @Controller
 @RequestMapping("/board/*")
@@ -25,12 +27,27 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@RequestMapping(value = "/board/main", method = RequestMethod.GET)
-	public String board(Model model) throws Exception {
+	public String board(Model model, Criteria cri) throws Exception {
 		logger.info("게시판 메인");
-		List<BoardVO> list = service.getList();
-		model.addAttribute("list", list);
+		
+		model.addAttribute("list", service.list(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listCount());
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "/board/board";
 	}
+	
+//	@RequestMapping(value = "/board/main", method = RequestMethod.GET)
+//	public String board(Model model) throws Exception {
+//		logger.info("게시판 메인");
+//		List<BoardVO> list = service.getList();
+//		model.addAttribute("list", list);
+//		return "/board/board";
+//	}
 	
 	@RequestMapping(value = "/board/detail", method = RequestMethod.GET)
 	public String boardDetail(Model model, HttpServletRequest request) throws Exception {

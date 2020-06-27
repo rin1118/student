@@ -30,6 +30,18 @@ th, td {
     font-family: 'JSDongkang-Regular'; 
 }
 
+.pageContainer {
+	display: flex;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 600;
+	font-family: 'JSDongkang-Regular';
+}
+
+.pageContainer li {
+	margin: 0px 15px;
+}
+
 .listItem tr{
 	height: 50px;
 }

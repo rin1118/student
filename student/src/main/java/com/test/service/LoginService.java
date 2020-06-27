@@ -25,4 +25,8 @@ public interface LoginService {
 	
 	//아이디 찾기
 	public String getId(String email);
+	
+	//비밀번호 찾기 (임시 비밀번호 발급)
+	public int getM_no(String email); //해당 이메일을 가진 유저번호 얻어오기
+	
 }

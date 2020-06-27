@@ -65,4 +65,10 @@ public class LoginServiceImpl implements LoginService{
 		// TODO Auto-generated method stub
 		return dao.getId(email);
 	}
+
+	@Override
+	public int getM_no(String email) {
+		// TODO Auto-generated method stub
+		return dao.getM_no(email);
+	}
 }

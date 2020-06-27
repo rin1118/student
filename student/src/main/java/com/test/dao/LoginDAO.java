@@ -20,9 +20,14 @@ public interface LoginDAO {
 	
 	//비밀번호 변경 (db에서 비밀번호 얻어오기)
 	public String getPw(int m_no);
+	
 	//비밀번호 변경 처리
 	public void changePw(LoginVO vo);
 	
 	//아이디 찾기
 	public String getId(String email);
+	
+	//비밀번호 찾기 ( 임시 비밀번호 발급 )
+	public int getM_no(String email); //해당 이메일의 멤버 번호를 얻어오기
+	
 }

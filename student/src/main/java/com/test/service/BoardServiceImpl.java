@@ -1,8 +1,5 @@
 package com.test.service;
 
-import java.awt.Window.Type;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +7,25 @@ import org.springframework.stereotype.Service;
 
 import com.test.dao.BoardDAO;
 import com.test.vo.BoardVO;
+import com.test.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDAO dao;
+	
+	@Override
+	public int listCount() {
+		// TODO Auto-generated method stub
+		return dao.listCount();
+	}
+
+	@Override
+	public List<BoardVO> list(Criteria cri) {
+		// TODO Auto-generated method stub
+		return dao.list(cri);
+	}
 	
 	@Override
 	public int write(BoardVO boardVO) throws Exception {
@@ -66,5 +76,7 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		dao.delete(b_no);
 	}
+
+	
 
 }

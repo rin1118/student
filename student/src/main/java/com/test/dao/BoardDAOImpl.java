@@ -7,12 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.vo.BoardVO;
+import com.test.vo.Criteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	@Override
+	public int listCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.listCount");
+	}
+
+	@Override
+	public List<BoardVO> list(Criteria cri) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.listPage", cri);
+	}
 	
 	@Override
 	public int write(BoardVO boardVO) throws Exception {
@@ -42,5 +55,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public void delete(int b_no) throws Exception {
 		sqlSession.update("boardMapper.delete", b_no);			
 	}
+
+	
 
 }
