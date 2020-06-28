@@ -56,6 +56,7 @@
 		resultType="com.test.vo.LectureVO">
 		select * from lecture 
 		where l_no in (select l_no from lectureBook where s_no = #{s_no})
+		order by title 
 	</select>
 	
 	<delete id="signUpCancel">
