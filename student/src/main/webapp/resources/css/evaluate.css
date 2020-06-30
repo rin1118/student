@@ -111,14 +111,13 @@ input.submitBtn {
 
 .searchContainer {
 	width: 800px;
-    margin: 0 auto;
+    margin: 68px auto;
 }
 
 
 .search {
     width: 580px;
     padding: 12px;
-    margin-bottom: 90px;
     border: 4px solid #0072ff;
 }
 
@@ -127,6 +126,7 @@ input.submitBtn {
     border: 4px solid #0072ff;
     border-radius: 5px;
     align-items: flex-end;
+    height: 50px;
 }
 
 .search:focus {
@@ -142,6 +142,7 @@ input.submitBtn {
     font-size: 15px;
     border-radius: 5px;
     font-family: 'Jua', 'Montserrat', sans-serif;
+    heigth: 50px;
 }
 
 input#submitBtn {
@@ -208,4 +209,7 @@ td.notLecutreBook {
 form.searchForm {
     width: 750px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

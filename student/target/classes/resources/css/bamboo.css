@@ -35,6 +35,9 @@ textarea {
 form.searchForm {
     height: 80px;
     margin-bottom: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 a.messageUpdate {
@@ -46,6 +49,7 @@ a.messageUpdate {
     border: 4px solid #41b33d;
     border-radius: 5px;
     align-items: flex-end;
+    height: 50px;
 }
 
 .searchBtn {

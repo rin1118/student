@@ -21,7 +21,7 @@
 				<span><a href="/logout">로그아웃</a></span>
 			</c:if>
 		</div>
-		<div>
+		<div class="titleBox">
 			<a href="/">
 				<span class="title">✅ 학생관리 시스템 🙋‍♀️</span>
 			</a>
