@@ -12,7 +12,6 @@
 <body>
 <%@include file="../homeNav.jsp" %>
 <section class="main">
-	<div class="pageTitle">📢 공지사항</div>
 	<div class="registerForm">
 		<form id="boardForm">
 			<c:if test="${member.getRole() == 'admin' }">
@@ -21,11 +20,8 @@
 					<input type="submit" value="삭제" id="boardDeleteBtn" class="registerSubmit">			
 				</span>			
 			</c:if>
-			<span>제목</span> 
-			<input type="text" name="title" value="${title}" class="writeInfo" readOnly>
-			<span>작성자</span> 
-			<input type="text" name="writer" value="${writer}" class="writeInfo" readOnly>
-			<span>내용</span> 
+			<div class="pageTitle">${title}</div>
+			<input type="text" name="title" value="${title}" class="writeInfo title" readOnly>
 			<textarea name="content" readOnly >${content }</textarea>
 			<input type="hidden" name="id" value="${id}">
 			<button class="backBtn" id="backBtn">목록</button>

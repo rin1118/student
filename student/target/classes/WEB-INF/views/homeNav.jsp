@@ -23,7 +23,7 @@
 		</div>
 		<div class="titleBox">
 			<a href="/">
-				<span class="title">✅ 학생관리 시스템 🙋‍♀️</span>
+				<span class="title">학사정보 관리 사이트</span>
 			</a>
 		</div>
 		<nav>

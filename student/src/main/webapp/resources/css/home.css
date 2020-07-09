@@ -82,7 +82,7 @@ textarea {
 
 .header li:hover {
     font-size: 19px;
-    border-bottom: 5px solid #0072ff;
+    border-bottom: 5px solid #1ebd25;
     transition: border-bottom 0.2s ease-in-out;
 }
 
@@ -152,7 +152,7 @@ div#msg {
 }
 
 .title {
-	font-size: 27px;
+	font-size: 35px;
     font-weight: 600;
     color: #0072ff;
     height: 90px;

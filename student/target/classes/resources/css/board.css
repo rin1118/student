@@ -77,47 +77,48 @@ th, td {
 
 .registerForm {
     width: 1024px;
-    background-color: white;
-    margin: 86px auto;
+    margin: 30px auto;
     height: 550px;
     display: flex;
     flex-direction: column;
     padding: 35px;
     justify-content: space-around;
     border-radius: 30px;
-    box-shadow: 0px 6px 15px 5px #e3e3e394;
-  
 }
 
 .registerForm form {
     display: flex;
     flex-direction: column;
-    width: 900px;
+    width: 820px;
     justify-content: center;
     margin: 0 auto;
     height: 509px;
     font-family: 'JSDongkang-Regular';
 }
 
-.registerForm form input {
-	text-align: center;
-}
 
 .registerForm form input,
 .registerForm form textarea {
 	font-family: 'JSDongkang-Regular';
-	border: 1px solid #d8d7d7;
+	border: none;
 }
 
 .writeInfo {
-	width: 290px;
+	width: 100%;
     border: 1px solid #4e4e4e7a;
     text-align: left;
     margin: 0 auto;
-    padding: 6px;
+    padding: 10px 20px;
     margin-bottom: 20px;
 }
 
+.writeInfo.title{
+	padding: 0px 20px;
+    text-align: left;
+    font-size: 13px;
+    color: black;
+    height: 50px;
+}
 
 .registerForm textarea {
 	height: 225px;
@@ -147,12 +148,12 @@ span.submitContainer {
 .backBtn {
 	background-color: #4f96f2;
     color: white;
-    width: 60px;
+    width: 100%;
     text-align: center;
     border: none;
     font-size: 13px;
     margin: 0 auto;
-    padding: 5px 0px;
+    padding: 15px 0px;
     border-radius: 10px;
 }
 

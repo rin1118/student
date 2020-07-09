@@ -15,9 +15,9 @@
 	<div class="pageTitle">✍ 게시글 수정</div>
 	<div class="registerForm">
 		<form method="post" action="/board/update?id=${id}">
-			제목 : <input type="text" name="title" value="${title}" class="writeInfo" >
-			작성자 <input type="text" name="writer" value="${writer}" class="writeInfo" readOnly>
-			내용 : <textarea name="content">${content}</textarea>
+			<input type="text" name="writer" value="${writer}" class="writeInfo" readOnly>
+			<input type="text" name="title" value="${title}" class="writeInfo title" >
+			<textarea name="content">${content}</textarea>
 			<input type="submit" value="확인" class="backBtn submit">
 		</form>
 	</div>
